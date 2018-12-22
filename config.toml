@@ -1,0 +1,46 @@
+baseurl = "https://kainlite.github.io/"
+languageCode = "en-US"
+title = "Tech experiments"
+# Enable comments by entering your Disqus shortname
+disqusShortname = ""
+# Enable Google Analytics by entering your tracking code
+googleAnalytics = ""
+theme = "hugo-sustain"
+
+[permalinks]
+  post = "/:year/:month/:day/:slug"
+
+[params]
+  author = "Gabriel Garrido - @kainlite"
+  description = "Tech ideas, tests, examples..."
+
+  # Custom assets can be linked with their paths relative to static/
+  custom_css = []
+  custom_js  = []
+
+[params.social]
+  Github        = "kainlite"
+  Email         = "kainlite@gmail.com"
+  Twitter       = "kainlite"
+  LinkedIn      = "gabriel.garrido"
+  Stackoverflow = "kainlite"
+  Telegram      = "kainlite"
+
+## Main Menu
+[[menu.main]]
+  name = "blog"
+  weight = 100
+  identifier = "blog"
+  url = "/blog/"
+
+# Example menu items
+# [[menu.main]]
+#   name = "projects"
+#   identifier = "projects"
+#   weight = 200
+#   url = "/projects/"
+# [[menu.main]]
+#   name = "resume"
+#   identifier = "resume"
+#   weight = 300
+#   url = "/resume/"
