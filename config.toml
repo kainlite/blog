@@ -11,7 +11,7 @@ theme = "hugo-sustain"
   post = "/:year/:month/:day/:slug"
 
 [params]
-  author = "Gabriel Garrido - @kainlite"
+  author = "Gabriel"
   description = "Tech ideas, tests, examples..."
 
   # Custom assets can be linked with their paths relative to static/
@@ -22,7 +22,7 @@ theme = "hugo-sustain"
   Github        = "kainlite"
   Email         = "kainlite@gmail.com"
   Twitter       = "kainlite"
-  LinkedIn      = "gabriel.garrido"
+  LinkedIn      = "gabrielgarrido"
   Stackoverflow = "kainlite"
   Telegram      = "kainlite"
 
