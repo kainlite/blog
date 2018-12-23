@@ -27,6 +27,7 @@
             <div class="blogpost">
               {{ .Content }}
               <hr>
+              {{ if isset .Site.Pages 5 }}
               <div class="related-posts">
                 <h5>Related Posts</h5>
                 {{ range first 3 ( where ( where .Site.Pages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags ) "Permalink" "!=" .Permalink ) }}
@@ -46,6 +47,7 @@
               </div>
             </div>
           </div>
+          {{ end }}
           <hr>
         {{ partial "disqus" . }}
         </div>
@@ -55,6 +57,6 @@
 
     <!-- Footer -->
     {{ partial "footer" . }}
-    
+
   </body>
 </html>

@@ -1,13 +1,9 @@
-# Build
+# Build and update live site
 ```bash
-hugo
+hugo -d ~/Webs/kainlite.github.io
+c kainlite.github.io
+gadd && gc -m "Message" && ggpush
 ```
 
-# Build put static content into a new branch
-```bash
-git checkout --orphan gh-pages
-git rm --cached -r .
-git add .
-git commit -m "Some nice message"
-git push origin $(git_current_branch)
-```
+If those fancy aliases looks like something you might like to have check my [dotfiles](https://github.com/kainlite/dotfiles) and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) :)
+
