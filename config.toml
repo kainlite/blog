@@ -2,7 +2,7 @@ baseurl = "https://kainlite.github.io/"
 languageCode = "en-US"
 title = "Tech experiments"
 # Enable comments by entering your Disqus shortname
-disqusShortname = ""
+disqusShortname = "kainlite"
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 
