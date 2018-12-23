@@ -15,7 +15,7 @@ COMMIT_MESSAGE=`git log -n 1 --pretty=format:%s ${local_ref}`
 
 hugo -d ~/Webs/kainlite.github.io
 ANYTHING_CHANGED=`cd ~/Webs/kainlite.github.io && git diff --exit-code`
-if [[ ${ANYTHING_CHANGED} -gt 0 ]]; then
+if [[ $? -gt 0 ]]; then
     cd ~/Webs/kainlite.github.io && git add . && git commit -m "${COMMIT_MESSAGE}" && git push origin master
 fi
 ```
