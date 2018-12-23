@@ -69,7 +69,7 @@ ingress.yaml     <--- Ingress route, etc.
 NOTES.txt        <--- Once deployed this file will display the details of our deployment, usually login data, how to connect, etc.
 service.yaml     <--- The service that we will use internally and/or via ingress to reach our deployed service.
 ```
-Go [templates](https://blog.gopheracademy.com/advent-2017/using-go-templates/) basics, if you need a refresher or a crash course in go templates.
+Go [templates](https://blog.gopheracademy.com/advent-2017/using-go-templates/) basics, if you need a refresher or a crash course in go templates, also always be sure to check Helm's own [documentation](https://github.com/helm/helm/blob/master/docs/chart_template_guide/functions_and_pipelines.md) and also some [tips and tricks](https://github.com/helm/helm/blob/master/docs/charts_tips_and_tricks.md).
 
 Let's check the deployment file:
 ```
