@@ -16,7 +16,7 @@ helm create hello-world
 ```
 Always use valid DNS names if you are going to have services, otherwise you will have issues later on.
 
-Inspect the contents:
+Inspect the contents, as you will notice every resource is just a kubernetes resource with some placeholders and basic logic to get something more reusable:
 ```
 cd hello-world
 
@@ -71,7 +71,7 @@ service.yaml     <--- The service that we will use internally and/or via ingress
 ```
 Go [templates](https://blog.gopheracademy.com/advent-2017/using-go-templates/) basics, if you need a refresher or a crash course in go templates, also always be sure to check Helm's own [documentation](https://github.com/helm/helm/blob/master/docs/chart_template_guide/functions_and_pipelines.md) and also some [tips and tricks](https://github.com/helm/helm/blob/master/docs/charts_tips_and_tricks.md).
 
-Let's check the deployment file:
+Let's check the [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) file:
 ```
 apiVersion: apps/v1beta2
 kind: Deployment
@@ -127,7 +127,7 @@ spec:
 ```
 As you can see everything will get replaced by what you define in the `values.yaml` file and everything is under `.Values` unless you define a local variable or some other variable using helpers for example.
 
-Let's check the service file:
+Let's check the [service](https://kubernetes.io/docs/concepts/services-networking/service/) file:
 ```
 apiVersion: v1
 kind: Service
@@ -150,7 +150,7 @@ spec:
     app.kubernetes.io/instance: {{ .Release.Name }}
 ```
 
-Let's check the ingress file:
+Let's check the [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) file:
 ```
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "hello-world.fullname" . -}}
