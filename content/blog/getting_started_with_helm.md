@@ -405,4 +405,4 @@ The following posts will be about package managers, development deployment tools
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.
 
-Also you can check the source code and changes in the generated code: [ghpages](https://github.com/kainlite/kainlite.github.io) and the source here: [source](https://github.com/kainlite/blog)
+Also you can check the source code and changes in the [generated code](https://github.com/kainlite/kainlite.github.io) and the [sources here](https://github.com/kainlite/blog)
