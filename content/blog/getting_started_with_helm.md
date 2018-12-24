@@ -8,7 +8,7 @@ highlight: true
 
 ### **Introduction**
 
-This tutorial will show you how to create a simple chart and also how to deploy it to kubernetes using [Helm](https://helm.sh/), in the examples I will be using [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) or you can [check this repo](https://github.com/kainlite/kainlite.github.io) that has a good overview of minikube, once installed and started (`minikube start`) that command will download and configure the local environment, you can follow with the following example:
+This tutorial will show you how to create a simple chart and also how to deploy it to kubernetes using [Helm](https://helm.sh/), in the examples I will be using [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) or you can [check out this repo](https://github.com/kainlite/kainlite.github.io) that has a good overview of minikube, once installed and started (`minikube start`) that command will download and configure the local environment, you can follow with the following example:
 
 Create the chart:
 ```
