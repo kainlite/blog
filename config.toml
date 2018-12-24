@@ -5,6 +5,9 @@ title = "Tech experiments"
 disqusShortname = "kainlite"
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = "UA-8919037-7"
+# License
+license = "MIT"
+licenselink = "https://github.com/kainlite/blog/blob/master/LICENSE.md"
 
 [permalinks]
   post = "/:year/:month/:day/:slug"
