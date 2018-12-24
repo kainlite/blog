@@ -26,6 +26,7 @@ Chart.yaml   <--- Metadata mostly, defines the version of your chart, etc.
 templates    <--- Here is where the magic happens.
 values.yaml  <--- Default values file (this is used to replace in the templates at runtime)
 ```
+Note: the following link explains the basics of [dependencies](https://docs.helm.sh/developing_charts/#managing-dependencies-manually-via-the-charts-directory), your chart can have as many dependencies as you need, the only thing that you need to do is add or install the other charts as dependencies.
 
 The file `values.yaml` by default will look like the following snippet:
 ```
