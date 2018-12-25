@@ -14,6 +14,7 @@ licenselink = "https://github.com/kainlite/blog/blob/master/LICENSE.md"
 
 [params]
   author = "Gabriel"
+  email = "kainlite@gmail.com"
   description = "Tech ideas, tests, examples..."
 
   # Custom assets can be linked with their paths relative to static/
@@ -28,6 +29,14 @@ licenselink = "https://github.com/kainlite/blog/blob/master/LICENSE.md"
   Stackoverflow = "kainlite"
   Telegram      = "kainlite"
   Disqus        = "kainlite"
+
+[outputFormats.jsonfeed]
+  mediaType = "application/json"
+  baseName = "index"
+  isPlainText = true
+
+[outputs]
+  home = ["html", "jsonfeed", "rss"]
 
 ## Main Menu
 [[menu.main]]
