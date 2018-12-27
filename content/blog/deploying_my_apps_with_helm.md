@@ -4,7 +4,8 @@ date: 2018-12-24
 linktitle: Deploying my apps with Helm
 title: Deploying my apps with Helm
 highlight: true
-tags: [helm, deployments]
+tags: [helm, deployments, kubernetes]
+categories: [deployment tools]
 ---
 
 ### **Deploying my apps with Helm**

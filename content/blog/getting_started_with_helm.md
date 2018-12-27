@@ -4,7 +4,8 @@ date: 2018-12-23
 linktitle: Getting started with Helm
 title: Getting started with Helm
 highlight: true
-tags: [helm, deployments]
+tags: [helm, deployments, kubernetes]
+categories: [deployment tools]
 ---
 
 ### **Introduction**
@@ -400,7 +401,7 @@ DRY is a good design goal and part of the art of a good template is knowing when
 The following posts will be about package managers, development deployment tools, etc. It's hard to put all the tools in a category, but they are trying to solve similar problems in different ways, and we will be exploring the ones that seem more promising to me, if you would like me to cover any other tool/project/whatever, just send me a message :)
 
 * [Expand on helm, search and install community charts](https://kainlite.github.io/blog/deploying_my_apps_with_helm/).
-* Getting started with Ksonnet and friends.
+* [Getting started with Ksonnet and friends](https://kainlite.github.io/blog/getting_started_with_ksonnet/)
 * Getting started with Skaffold.
 * Getting started with Gitkube.
 
