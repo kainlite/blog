@@ -45,15 +45,8 @@ The same old YAML or JSON manifest but this time written in [Jsonnet](https://js
 Phew, that's a lot of names and terminology at once, let's get started with the terminal already.
 
 ### Let's get started
-
-Create the application:
+This command will generate the following folder structure `ks init wordpress`:
 ```bash
-$ ks create my_awesome_app
-```
-This command will generate the following folder structure:
-
-```bash
-$ ks init wordpress
 INFO Using context "minikube" from kubeconfig file "~/.kube/config"
 INFO Creating environment "default" with namespace "default", pointing to "version:v1.12.4" cluster at address "https://192.168.99.100:8443"
 INFO Generating ksonnet-lib data at path '~/k8s-examples/wordpress/lib/ksonnet-lib/v1.12.4'
