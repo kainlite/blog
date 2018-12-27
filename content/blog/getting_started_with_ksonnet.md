@@ -171,7 +171,7 @@ spec:
         ports:
         - containerPort: 80
 ```
-We will see what our package will generate the desired resources in *YAML* with some good defaults. And by default if you remember from the definitions a component needs a params file to fill the blanks in this case it is `components/params.libsonnet`:
+We will see what our package will generate in *YAML* with some good defaults. And by default if you remember from the definitions a component needs a params file to fill the blanks in this case it is `components/params.libsonnet`:
 ```json
 {
   global: {
