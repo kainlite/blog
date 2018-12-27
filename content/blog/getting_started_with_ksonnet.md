@@ -37,7 +37,7 @@ It provides a way to organize and re-use code.
 A package is a set of related prototypes and associates helper libraries, it allows you to create and share packages between applications.
 
 #### Registry
-It's essentially a repository for packages, it suuports the incubator registry, github, filesystem, and Helm.
+It's essentially a repository for packages, it supports the incubator registry, github, filesystem, and Helm.
 
 #### Manifest
 The same old YAML or JSON manifest but this time written in [Jsonnet](https://jsonnet.org/learning/tutorial.html), basically Jsonnet is a simple extension of JSON.
@@ -218,7 +218,7 @@ The resulting `components/params.json` will be:
   global: {
     // User-defined global parameters; accessible to all component and environments, Ex:
     // replicas: 4,
-	mariadbEmptyPassword: "no",
+    mariadbEmptyPassword: "no",
     mariadbUser: "mywordpressuser",
     mariadbPassword: "mywordpresspassword",
     mariadbDatabase: "bitnami_wordpress",
