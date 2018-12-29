@@ -112,9 +112,9 @@ There are a few more files in there, you can see the full sources [here](https:/
 Okay, enough boilerplate let's get to business, so let's create a new ksonnet application:
 ```bash
 $ ks init echobot
-INFO Using context "minikube" from kubeconfig file "/home/kainlite/.kube/config"
+INFO Using context "minikube" from kubeconfig file "~/.kube/config"
 INFO Creating environment "default" with namespace "default", pointing to "version:v1.8.0" cluster at address "https://192.168.99.100:8443"
-INFO Generating ksonnet-lib data at path '/home/kainlite/Webs/echobot/echobot/lib/ksonnet-lib/v1.8.0'
+INFO Generating ksonnet-lib data at path '~/Webs/echobot/echobot/lib/ksonnet-lib/v1.8.0'
 ```
 
 And now based let's create the deployment for it `echobot.jsonnet`:
@@ -178,7 +178,7 @@ Event Received: Current latency: 1.256788737s
 Event Received: Message: &{{message CEDGU6EA0 UEDJT5DDH <@UED48HD33> echo! 1546124966.002300  false [] [] <nil>  false 0  false  1546124966.002300   <nil>      [] 0 []  [] false <nil>  0 TEDJT5CTD []  false false} <nil>}
 ```
 
-And that folks is all I have for now, I hope you enjoyed this small tour of ksonnet. The source code for the bot can be found [https://github.com/kainlite/echobot](here). In a future post I might explore [ksonnet and helm charts](https://ksonnet.io/docs/examples/helm/).
+And that folks is all I have for now, I hope you enjoyed this small tour of ksonnet. The source code for the bot can be found [here](https://github.com/kainlite/echobot). In a future post I might explore [ksonnet and helm charts](https://ksonnet.io/docs/examples/helm/).
 
 ### Upcoming topics
 As promised I will be doing one post about [Gitkube](https://github.com/hasura/gitkube) and [Skaffold](https://github.com/GoogleContainerTools/skaffold), there are a lot of deployment tools for kubernetes but those are the most promising ones to me, also after that I will start covering more topics about [Docker](https://www.docker.com/), [ContainerD](https://containerd.io/), [KubeADM](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/), and Kubernetes in general.
