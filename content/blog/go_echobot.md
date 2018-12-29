@@ -8,7 +8,7 @@ tags: [ksonnet, jsonnet, deployments]
 categories: [deployment tools]
 ---
 
-### **Advanced usage**
+### **Echo bot**
 
 To be honest, there is no other way to get the benefits of having [ksonnet](https://ksonnet.io/) if you're not going to take advantage of the _deployments as code_ facilities that it brings thanks to Jsonnet.
 
