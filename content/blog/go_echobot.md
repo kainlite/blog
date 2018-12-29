@@ -4,7 +4,7 @@ date: 2018-12-29
 linktitle: Go echo bot
 title: Go echo bot
 highlight: true
-tags: [ksonnet, jsonnet, deployments]
+tags: [go, slack, ksonnet, jsonnet, deployments]
 categories: [deployment tools]
 ---
 
