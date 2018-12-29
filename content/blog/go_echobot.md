@@ -1,8 +1,8 @@
 ---
 author: "Gabriel Garrido"
 date: 2018-12-29
-linktitle: Ksonnet advanced usage
-title: Ksonnet advanced usage
+linktitle: Go echo bot
+title: Go echo bot
 highlight: true
 tags: [ksonnet, jsonnet, deployments]
 categories: [deployment tools]
@@ -177,6 +177,9 @@ Event Received: Message: &{{message CEDGU6EA0 UEDJT5DDH <@UED48HD33> echo! 15461
 ```
 
 And that folks is all I have for now, I hope you enjoyed this small tour of ksonnet. The source code for the bot can be found [https://github.com/kainlite/echobot](here). In a future post I might explore [ksonnet and helm charts](https://ksonnet.io/docs/examples/helm/).
+
+### Upcoming topics
+As promised I will be doing one post about [Gitkube](https://github.com/hasura/gitkube) and [Skaffold](https://github.com/GoogleContainerTools/skaffold), there are a lot of deployment tools for kubernetes but those are the most promising ones to me, also after that I will start covering more topics about [Docker](https://www.docker.com/), [ContainerD](https://containerd.io/), [KubeADM](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/), and Kubernetes in general.
 
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.
