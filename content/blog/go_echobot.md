@@ -10,11 +10,13 @@ categories: [deployment tools]
 
 ### **Echo bot**
 
+This post was going to be about advanced ksonnet usage, but it went more about the echo bot itself, so I decided to rename it.
+
 To be honest, there is no other way to get the benefits of having [ksonnet](https://ksonnet.io/) if you're not going to take advantage of the _deployments as code_ facilities that it brings thanks to Jsonnet.
 
-In the examples I will be using [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) or you can [check out this repo](https://github.com/kainlite/kainlite.github.io) that has a good overview of minikube, once installed and started (`minikube start`) that command will download and configure the local environment, if you have been following the previous posts you already have minikube installed and working:
+This time we will see how to use [proper templates](https://github.com/cybermaggedon/ksonnet-cheat-sheet), it seems that the templates generated with `ks` are outdated at the time of this writing ksonnet version is: 0.13.1, no surprise here because it's not a really mature tool. It does require a lot of effort in learning, hacking and reading to get things to work, but hopefully soon it will be easier, of course this is my personal opinion and I have not used it for a real project yet, but I expect it to grow and become more usable before I attempt to do something for the real world with it.
 
-This time we will see how to use [proper templates](https://github.com/cybermaggedon/ksonnet-cheat-sheet), it seems that the templates generated with `ks` are outdated at the time of this writing ksonnet version is: 0.13.1, no surprise here but it's not a really mature tool. It does require a lot of effort in learning, hacking and reading to get things to work, but hopefully soon it will be easier, of course this is my personal opinion and I have not used it for a real project yet, but I expect it to grow and become more usable before I attempt to do something for the real world with it.
+In the examples I will be using [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) or you can [check out this repo](https://github.com/kainlite/kainlite.github.io) that has a good overview of minikube, once installed and started (`minikube start`) that command will download and configure the local environment, if you have been following the previous posts you already have minikube installed and working:
 
 ### Let's get started
 This time I'm not going to deploy another wordpress instance but a simple Slack echo bot made with go:
