@@ -80,7 +80,7 @@ func main() {
         }
 }
 ```
-As you can see it's the simplest example from the wiki of the [Go Slack API](https://github.com/nlopes/slack) wiki page, it only connects to Slack and when it reads a message if it's addressed to the bot then it echoes the message back, creating a bot and everything else is out of the scope of this article but it's really simple, you only need to create an app in the Slack workspace, set it as a bot and grab the token (there is a lot more that you can customize but that is the most basic procedure to get started with a bot), then you just invite it to any channel that you want and start interacting with it.
+As you can see it's the simplest example from the readme of the [Go Slack API](https://github.com/nlopes/slack) project, it only connects to Slack and when it reads a message if it's addressed to the bot then it echoes the message back, creating a bot and everything else is out of the scope of this article but it's really simple, you only need to create an app in the Slack workspace, set it as a bot and grab the token (there is a lot more that you can customize but that is the most basic procedure to get started with a bot), then you just invite it to any channel that you want and start interacting with it.
 
 Here you can see the `Dockerfile`, for security we create an app user for the build and for running it, and to save space and bandwidth we only ship what we need using a multi-stage build:
 ```plain
