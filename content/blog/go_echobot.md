@@ -102,12 +102,13 @@ WORKDIR /app
 RUN adduser -D -g 'app' app && \
     chown -R app:app /app
 
+COPY --from=builder --chown=app /app/health_check.sh /app/health_check.sh
 COPY --from=builder --chown=app /app/main /app/main
 
 USER app
 CMD ["/app/main"]
 ```
-There are a few more files in there, you can see the full sources [here](https://github.com/kainlite/echobot), for example `health_check.sh`, as our app doesn't listen on any port we need a way to tell kubernetes how to check or know that our app is alive, otherwise it will murder the pod over and over again.
+There are a few more files in there, you can see the full sources [here](https://github.com/kainlite/echobot), for example `health_check.sh`, as our app doesn't listen on any port we need a way to tell kubernetes how to check if our app is alive.
 
 Okay, enough boilerplate let's get to business, so let's create a new ksonnet application:
 ```bash
@@ -136,10 +137,21 @@ local envs = [
   },
 ];
 
+local livenessProbe = {
+  exec: {
+    command: [
+      '/bin/sh',
+      '-c',
+      '/app/health_check.sh',
+    ],
+  },
+};
+
 // Define containers
 local containers = [
-  container.new('echobot', 'kainlite/echobot:0.0.1') {
+  container.new('echobot', 'kainlite/echobot:0.0.2') {
     env: (envs),
+    livenessProbe: livenessProbe,
   },
 ];
 
