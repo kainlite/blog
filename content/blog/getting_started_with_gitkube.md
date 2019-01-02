@@ -15,7 +15,7 @@ This time we will see how to get started with [Gitkube](https://gitkube.sh/), it
 In the examples I will be using [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) or you can [check out this repo](https://github.com/kainlite/kainlite.github.io) that has a good overview of minikube, once installed and started (`minikube start`) that command will download and configure the local environment, if you have been following the previous posts you already have minikube installed and working, *but in this post be sure to use _minikube tunnel_* if you configure gitkube with a load balancer (or if you configure any service type as load balancer):
 
 ### Let's get started
-We're going to deploy or re-deploy our [chat bot](https://github.com/kainlite/echobot/tree/gitkube) one more time but this time using gitkube.
+We're going to deploy or re-deploy our [chat bot article](https://kainlite.github.io/blog/go_echobot/), [chat bot gitkube branch](https://github.com/kainlite/echobot/tree/gitkube) one more time but this time using gitkube.
 
 First of all we need to install the gitkube binary in our machine and then the CRD in our kubernetes cluster:
 ```plain
