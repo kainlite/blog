@@ -274,7 +274,7 @@ Skaffold also has another nice option that it's called _dev_ it watches the fold
 
 Let's clean up and call it a day:
 ```plain
-skaffold delete
+$ skaffold delete
 Cleaning up...
 deployment.extensions "echobot" deleted
 Cleanup complete in 3.833219278s
