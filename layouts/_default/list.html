@@ -5,6 +5,13 @@
       {{ partial "header" . }}
       <div class="container">
         <h3>Archive by date</h3>
+          <ul id="all-tags">
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+              {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
+                <a href="{{ .Permalink }}" class="label label-success">{{ $name }}</a>
+              {{ end }}
+            {{ end }}
+          </ul>
           <div class="col-sm-3 col-md-3 col-lg-3 pull-right">
             <a href="/index.xml">
               <img height="20px" width="20px" src="/img/rss.png" />

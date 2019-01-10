@@ -5,11 +5,12 @@ linktitle: Why do I need a service mesh?
 title: Why do I need a service mesh?
 highlight: true
 tags:
- - service mesh
- - kubernetes
+- istio
+- service-mesh
+- kubernetes
 categories:
- - service mesh
- - kubernetes
+- service-mesh
+- kubernetes
 ---
 
 

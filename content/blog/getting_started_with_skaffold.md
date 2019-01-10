@@ -6,10 +6,11 @@ title: Getting started with skaffold
 name: Getting started with skaffold
 highlight: true
 tags:
+- skaffold
 - kubernetes
-- deployment_tools
+- deployment-tools
 categories:
-- deployment_tools
+- deployment-tools
 ---
 
 ### **Skaffold**

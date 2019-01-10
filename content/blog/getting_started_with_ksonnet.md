@@ -7,9 +7,10 @@ highlight: true
 tags:
 - ksonnet
 - jsonnet
-- deployment_tools
+- deployment-tools
+- kubernetes
 categories:
-- deployment_tools
+- deployment-tools
 ---
 
 ### **Introduction**

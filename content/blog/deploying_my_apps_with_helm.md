@@ -6,10 +6,10 @@ title: Deploying my apps with Helm
 highlight: true
 tags:
 - helm
-- deployment_tools
+- deployment-tools
 - kubernetes
 categories:
-- deployment_tools
+- deployment-tools
 ---
 
 ### **Deploying my apps with Helm**

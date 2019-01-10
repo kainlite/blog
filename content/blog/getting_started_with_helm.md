@@ -6,10 +6,10 @@ title: Getting started with Helm
 highlight: true
 tags:
 - helm
-- deployment tools
+- deployment-tools
 - kubernetes
 categories:
-- deployment_tools
+- deployment-tools
 ---
 
 ### **Introduction**

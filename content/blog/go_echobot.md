@@ -9,9 +9,10 @@ tags:
 - slack
 - ksonnet
 - jsonnet
-- deployment_tools
+- kubernetes
+- deployment-tools
 categories:
-- deployment_tools
+- deployment-tools
 ---
 
 ### **Echo bot**

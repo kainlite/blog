@@ -6,9 +6,11 @@ title: Getting started with gitkube
 highlight: true
 tags:
 - git
-- deployment_tools
+- gitkube
+- kubernetes
+- deployment-tools
 categories:
-- deployment_tools
+- deployment-tools
 ---
 
 ### **Gitkube**

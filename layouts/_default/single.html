@@ -17,17 +17,17 @@
           <h4>
           {{ .Date.Format "January 2, 2006" }}
             &nbsp;&nbsp;
-			{{ $taxo := "tags" }}
-			{{ with .Param $taxo }}
-				{{ range $index, $director := . }}
-					{{- if gt $index 0 -}} &nbsp; {{ end -}}
-					{{ with $.Site.GetPage (printf "/%s/%s" $taxo $director) -}}
-  				      <a href="{{ .Permalink }}" class="label label-success">
-                          {{ $director }}
-                      </a>
-					{{- end -}}
-				{{- end -}}
-			{{ end }}
+            {{ $taxo := "tags" }}
+            {{ with .Param $taxo }}
+              {{ range $index, $director := . }}
+                {{- if gt $index 0 -}} &nbsp; {{ end -}}
+                {{ with $.Site.GetPage (printf "/%s/%s" $taxo $director) -}}
+                  <a href="{{ .Permalink }}" class="label label-success">
+                    {{ $director }}
+                  </a>
+                {{- end -}}
+              {{- end -}}
+            {{ end }}
           </h4>
         </div>
         <div class="panel panel-default">
