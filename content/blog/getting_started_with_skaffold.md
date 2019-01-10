@@ -3,9 +3,13 @@ author: "Gabriel Garrido"
 date: 2019-01-03
 linktitle: Getting started with skaffold
 title: Getting started with skaffold
+name: Getting started with skaffold
 highlight: true
-tags: [kubernetes, deployments]
-categories: [deployment tools]
+tags:
+- kubernetes
+- deployment_tools
+categories:
+- deployment_tools
 ---
 
 ### **Skaffold**

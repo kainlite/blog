@@ -4,8 +4,12 @@ date: 2018-12-27
 linktitle: Getting started with ksonnet
 title: Getting started with ksonnet
 highlight: true
-tags: [ksonnet, jsonnet, deployments]
-categories: [deployment tools]
+tags:
+- ksonnet
+- jsonnet
+- deployment_tools
+categories:
+- deployment_tools
 ---
 
 ### **Introduction**

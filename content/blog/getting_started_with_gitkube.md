@@ -4,8 +4,11 @@ date: 2019-01-01
 linktitle: Getting started with gitkube
 title: Getting started with gitkube
 highlight: true
-tags: [git, deployments]
-categories: [deployment tools]
+tags:
+- git
+- deployment_tools
+categories:
+- deployment_tools
 ---
 
 ### **Gitkube**

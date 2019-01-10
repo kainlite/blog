@@ -4,8 +4,12 @@ date: 2019-01-06
 linktitle: Why do I need a service mesh?
 title: Why do I need a service mesh?
 highlight: true
-tags: [mesh, kubernetes]
-categories: [mesh, kubernetes]
+tags:
+ - service mesh
+ - kubernetes
+categories:
+ - service mesh
+ - kubernetes
 ---
 
 

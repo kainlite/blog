@@ -4,8 +4,12 @@ date: 2018-12-23
 linktitle: Getting started with Helm
 title: Getting started with Helm
 highlight: true
-tags: [helm, deployments, kubernetes]
-categories: [deployment tools]
+tags:
+- helm
+- deployment tools
+- kubernetes
+categories:
+- deployment_tools
 ---
 
 ### **Introduction**
