@@ -27,7 +27,7 @@ In the examples I will be using [minikube](https://kubernetes.io/docs/tasks/tool
 
 ### Let's get started
 This time I'm not going to deploy another wordpress instance but a simple Slack echo bot made with go:
-```
+{{< highlight go >}}
 package main
 
 import (
@@ -86,11 +86,11 @@ func main() {
                 }
         }
 }
-```
+{{< /highlight >}}
 As you can see it's the simplest example from the readme of the [Go Slack API](https://github.com/nlopes/slack) project, it only connects to Slack and when it reads a message if it's addressed to the bot then it echoes the message back, creating a bot and everything else is out of the scope of this article but it's really simple, you only need to create an app in the Slack workspace, set it as a bot and grab the token (there is a lot more that you can customize but that is the most basic procedure to get started with a bot), then you just invite it to any channel that you want and start interacting with it.
 
 Here you can see the `Dockerfile`, for security we create an app user for the build and for running it, and to save space and bandwidth we only ship what we need using a multi-stage build:
-```plain
+{{< highlight yaml >}}
 # Build
 FROM golang:1.11.2-alpine as builder
 
@@ -114,19 +114,19 @@ COPY --from=builder --chown=app /app/main /app/main
 
 USER app
 CMD ["/app/main"]
-```
+{{< /highlight >}}
 There are a few more files in there, you can see the full sources [here](https://github.com/kainlite/echobot), for example `health_check.sh`, as our app doesn't listen on any port we need a way to tell kubernetes how to check if our app is alive.
 
 Okay, enough boilerplate let's get to business, so let's create a new ksonnet application:
-```bash
+{{< highlight yaml >}}
 $ ks init echobot
 INFO Using context "minikube" from kubeconfig file "~/.kube/config"
 INFO Creating environment "default" with namespace "default", pointing to "version:v1.8.0" cluster at address "https://192.168.99.100:8443"
 INFO Generating ksonnet-lib data at path '~/Webs/echobot/echobot/lib/ksonnet-lib/v1.8.0'
-```
+{{< /highlight >}}
 
 And now let's grab a template and modify it accordingly to be able to create the deployment for the bot `components/echobot.jsonnet`:
-```
+{{< highlight yaml >}}
 // Import KSonnet library
 local params = std.extVar('__ksonnet/params').components.demo;
 local k = import 'k.libsonnet';
@@ -170,20 +170,20 @@ local resources = [deployment];
 
 // Return list of resources.
 k.core.v1.list.new(resources)
-```
+{{< /highlight >}}
 Note that I have uploaded that image to docker hub so you can use it to follow the example if you want, after that just replace `really-long-token` with your token, and then do:
-```plain
+{{< highlight yaml >}}
 $ ks apply default
 INFO Applying deployments echobot
 INFO Creating non-existent deployments echobot
-```
+{{< /highlight >}}
 
 And now if we check our deployment and pod, we should see something like this:
 
 ![Echo bot](/img/echobot.png)
 
 And in the logs:
-```plain
+{{< highlight yaml >}}
  $ kubectl get pods
 NAME                               READY     STATUS    RESTARTS   AGE
 echobot-7456f7d7dd-twg4r           1/1       Running   0          53s
@@ -195,7 +195,7 @@ Event Received: Event Received: Current latency: 1.256397423s
 Event Received: Current latency: 1.25679313s
 Event Received: Current latency: 1.256788737s
 Event Received: Message: &{{message CEDGU6EA0 UEDJT5DDH <@UED48HD33> echo! 1546124966.002300  false [] [] <nil>  false 0  false  1546124966.002300   <nil>      [] 0 []  [] false <nil>  0 TEDJT5CTD []  false false} <nil>}
-```
+{{< /highlight >}}
 
 And that folks is all I have for now, I hope you enjoyed this small tour of ksonnet. The source code for the bot can be found [here](https://github.com/kainlite/echobot). In a future post I might explore [ksonnet and helm charts](https://ksonnet.io/docs/examples/helm/).
 

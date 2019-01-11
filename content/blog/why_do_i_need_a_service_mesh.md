@@ -32,13 +32,13 @@ In case you don't agree with my explanations that's ok, this is a TL;DR version 
 
 ### Let's get started
 First of all we need to download and install Istio in our cluster, the recommended way of doing it is using helm (In this case I will be using the no Tiller alternative, but it could be done with helm install as well, check here for [more info](https://istio.io/docs/setup/kubernetes/helm-install/)):
-```plain
+{{< highlight yaml >}}
 $ curl -L https://git.io/getLatestIstio | sh -
-```
+{{< /highlight >}}
 This will download and extract the latest release, in this case 1.0.5 at this moment.
 
 So let's install Istio... only pay attention to the first 3 commands, then you can skip until the end of the code block, I post all the output because I like full examples :)
-```plain
+{{< highlight yaml >}}
 istio-1.0.5 $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system --set grafana.enabled=true > $HOME/istio.yaml
 istio-1.0.5 $ kubectl create namespace istio-system
 namespace "istio-system" created
@@ -177,11 +177,11 @@ rule.config.istio.io "tcpkubeattrgenrulerule" created
 kubernetes.config.istio.io "attributes" created
 destinationrule.networking.istio.io "istio-policy" created
 destinationrule.networking.istio.io "istio-telemetry" created
-```
+{{< /highlight >}}
 WOAH, What did just happen?, a lot of new resources were created, basically we just generated the manifest from the helm chart and applied that to our cluster.
 
 So lets see what's running and what that means:
-```plain
+{{< highlight yaml >}}
 $ kubectl get pods -n istio-system
 NAME                                      READY     STATUS      RESTARTS   AGE
 istio-citadel-856f994c58-l96p8            1/1       Running     0          3m
@@ -194,7 +194,7 @@ istio-policy-6fcb6d655f-9544z             2/2       Running     0          3m
 istio-sidecar-injector-768c79f7bf-th8zh   1/1       Running     0          3m
 istio-telemetry-664d896cf5-jdcwv          2/2       Running     0          3m
 prometheus-76b7745b64-f8jxn               1/1       Running     0          3m
-```
+{{< /highlight >}}
 A few minutes later, almost everything is up, but what's all that? Istio has several components, see the following overview extracted from [github](https://github.com/istio/istio).
 
 **Envoy**: Sidecar proxies per microservice to handle ingress/egress traffic between services in the cluster and from a service to external services. The proxies form a secure microservice mesh providing a rich set of functions like discovery, rich layer-7 routing, circuit breakers, policy enforcement and telemetry recording/reporting functions.
@@ -211,7 +211,7 @@ Note: The service mesh is not an overlay network. It simplifies and enhances how
 **Galley**: Central component for validating, ingesting, aggregating, transforming and distributing config within Istio.
 
 Ok so, a lot of new things were installed but how do I know it's working? let's deploy a [test application](https://istio.io/docs/examples/bookinfo/) and check it:
-```plain
+{{< highlight yaml >}}
 $ export PATH="$PATH:~/istio-1.0.5/bin"
 istio-1.0.5/samples/bookinfo $ kubectl apply -f <(istioctl kube-inject -f platform/kube/bookinfo.yaml)
 service "details" created
@@ -224,9 +224,9 @@ deployment.extensions "reviews-v2" created
 deployment.extensions "reviews-v3" created
 service "productpage" created
 deployment.extensions "productpage-v1" created
-```
+{{< /highlight >}}
 That command not only deployed the application but injected the Istio sidecar to each pod:
-```plain
+{{< highlight yaml >}}
 $ kubectl get pods
 NAME                              READY     STATUS    RESTARTS   AGE
 details-v1-8bd954dbb-zhrqq        2/2       Running   0          2m
@@ -235,11 +235,11 @@ ratings-v1-68d648d6fd-w68qb       2/2       Running   0          2m
 reviews-v1-b4c984bdc-9s6j5        2/2       Running   0          2m
 reviews-v2-575446d5db-r6kwc       2/2       Running   0          2m
 reviews-v3-74458c4889-kr4wb       2/2       Running   0          2m
-```
+{{< /highlight >}}
 As we can see each pod has 2 containers in it, the app container and istio-proxy. You can also configure [automatic sidecar injection](https://istio.io/docs/setup/kubernetes/sidecar-injection/#automatic-sidecar-injection).
 
 Also all services are running:
-```plain
+{{< highlight yaml >}}
 $ kubectl get services
 NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 details       ClusterIP   10.245.134.179   <none>        9080/TCP   3m
@@ -247,25 +247,25 @@ kubernetes    ClusterIP   10.245.0.1       <none>        443/TCP    3d
 productpage   ClusterIP   10.245.32.221    <none>        9080/TCP   3m
 ratings       ClusterIP   10.245.159.112   <none>        9080/TCP   3m
 reviews       ClusterIP   10.245.77.125    <none>        9080/TCP   3m
-```
+{{< /highlight >}}
 
 But how do I access the app?
-```plain
+{{< highlight yaml >}}
 istio-1.0.5/samples/bookinfo $ kubectl apply -f networking/bookinfo-gateway.yaml
 gateway.networking.istio.io "bookinfo-gateway" created
 virtualservice.networking.istio.io "bookinfo" created
-```
+{{< /highlight >}}
 In Istio a Gateway configures a load balancer for HTTP/TCP traffic, most commonly operating at the edge of the mesh to enable ingress traffic for an application (L4-L6).
 
 After that we need to set some environment variables to fetch the LB ip, port, etc.
-```plain
+{{< highlight yaml >}}
 $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
 $ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
 $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 
 curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage
-```
+{{< /highlight >}}
 If the latest curl returns 200 then we're good, you can also browse the app `open http://${GATEWAY_URL}/productpage` and you will see something like the following image:
 {{< figure src="/img/productpage-example.png" title="Product page example" width="100%" >}}
 

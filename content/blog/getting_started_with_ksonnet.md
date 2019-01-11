@@ -51,7 +51,7 @@ Phew, that's a lot of names and terminology at once, let's get started with the 
 
 ### Let's get started
 This command will generate the following folder structure `ks init wordpress`:
-```bash
+{{< highlight yaml >}}
 INFO Using context "minikube" from kubeconfig file "~/.kube/config"
 INFO Creating environment "default" with namespace "default", pointing to "version:v1.12.4" cluster at address "https://192.168.99.100:8443"
 INFO Generating ksonnet-lib data at path '~/k8s-examples/wordpress/lib/ksonnet-lib/v1.12.4'
@@ -62,20 +62,20 @@ components      <--- Components by default it's empty and has a params file.
 environments    <--- By default there is only one environment called default.
 lib             <--- Here we can find the ksonnet helpers that match the Kubernetes API with the common resources (Pods, Deployments, etc).
 vendor          <--- Here is where the installed packages/apps go, it can be seen as a dependencies folder.
-```
+{{< /highlight >}}
 
 Let's generate a _deployed-service_ and inspect it's context:
-```bash
+{{< highlight yaml >}}
 $ ks generate deployed-service wordpress \
   --image bitnami/wordpress:5.0.2 \
   --type ClusterIP
 
 INFO Writing component at '~/k8s-examples/wordpress/components/wordpress.jsonnet'
-```
+{{< /highlight >}}
 At the moment of this writing the latest version of Wordpress is 5.0.2, it's always recommended to use static version numbers instead of tags like latest (because latest can not be latest).
 
 Let's see how our component looks like:
-```json
+{{< highlight yaml >}}
 local env = std.extVar("__ksonnet/environments");
 local params = std.extVar("__ksonnet/params").components.wordpress;
 [
@@ -134,11 +134,11 @@ local params = std.extVar("__ksonnet/params").components.wordpress;
     }
   }
 ]
-```
+{{< /highlight >}}
 It's just another template for some known resources, a [service](https://kubernetes.io/docs/concepts/services-networking/service/) and a [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) that's where the name came from: _deployed-service_, but where are those params coming from?
 
 If we run `ks show default`:
-```yaml
+{{< highlight yaml >}}
 ---
 apiVersion: v1
 kind: Service
@@ -175,9 +175,9 @@ spec:
         name: wordpress
         ports:
         - containerPort: 80
-```
+{{< /highlight >}}
 We will see what our package will generate in *YAML* with some good defaults. And by default if you remember from the definitions a component needs a params file to fill the blanks in this case it is `components/params.libsonnet`:
-```json
+{{< highlight yaml >}}
 {
   global: {
     // User-defined global parameters; accessible to all component and environments, Ex:
@@ -196,22 +196,22 @@ We will see what our package will generate in *YAML* with some good defaults. An
     },
   },
 }
-```
+{{< /highlight >}}
 But that's not enough to run wordpress is it?, No is not, we need a database with persistent storage for it to work properly, so we will need to generate and extend another _deployed-service_.
 
 The next step would be to create another component:
-```bash
+{{< highlight yaml >}}
 $ ks generate deployed-service mariadb \
   --image bitnami/mariadb:10.1.37 \
   --type ClusterIP
 
 INFO Writing component at '/home/kainlite/Webs/k8s-examples/wordpress/components/mariadb.jsonnet'
-```
+{{< /highlight >}}
 The latest stable version of MariaDB 10.1 GA at the moment of this writting is 10.1.37.
 
 Then we will need to add a persistent volume and also tell Wordpress to use this MariaDB instance. How do we do that, we will need to modify a few files, like this (in order to re-use things I placed the mysql variables in the global section, for this example that will simplify things, but it might not be the best approach for a production environment):
 The resulting `components/params.json` will be:
-```json
+{{< highlight yaml >}}
 {
   global: {
     // User-defined global parameters; accessible to all component and environments, Ex:
@@ -242,10 +242,10 @@ The resulting `components/params.json` will be:
     },
   },
 }
-```
+{{< /highlight >}}
 
 The resulting `components/wordpress.jsonnet` will be:
-```json
+{{< highlight yaml >}}
 local env = std.extVar("__ksonnet/environments");
 local params = std.extVar("__ksonnet/params").components.wordpress;
 [
@@ -322,11 +322,11 @@ local params = std.extVar("__ksonnet/params").components.wordpress;
     }
   }
 ]
-```
+{{< /highlight >}}
 The only thing that changed here is `spec.containers.env` which wasn't present before.
 
 The resulting `components/mariadb.jsonnet` will be:
-```json
+{{< highlight yaml >}}
 local env = std.extVar("__ksonnet/environments");
 local params = std.extVar("__ksonnet/params").components.mariadb;
 [
@@ -421,7 +421,7 @@ local params = std.extVar("__ksonnet/params").components.mariadb;
     }
 }
 ]
-```
+{{< /highlight >}}
 I know, I know, that is a lot of JSON, I trust you have a decent scroll :).
 
 The only things that changed here are `spec.containers.env`, `spec.containers.volumeMount` and `spec.volumes` which weren't present before, that's all you need to make wordpress work with mariadb.
@@ -429,12 +429,12 @@ The only things that changed here are `spec.containers.env`, `spec.containers.vo
 This post only scratched the surface of what Ksonnet and Jsonnet can do, in another post I will describe more advances features with less _JSON_ / _YAML_. There are a lot of things that can be improved and we will cover those things in the next post, if you want to see all the source code for this post go [here](https://github.com/kainlite/ksonnet-wordpress-example).
 
 Let's clean up `ks delete default`:
-```bash
+{{< highlight yaml >}}
 INFO Deleting services mariadb
 INFO Deleting deployments mariadb
 INFO Deleting services wordpress
 INFO Deleting deployments wordpress
-```
+{{< /highlight >}}
 
 ### Notes
 
@@ -443,7 +443,7 @@ If you want to check the wordpress installation via browser you can do `minikube
 I'm not aware if Ksonnet supports releases and rollbacks like Helm, but it seems it could be emulated using git tags and just some git hooks.
 
 If everything goes well, you should see something like this in the logs:
-```bash
+{{< highlight yaml >}}
 $ kubectl logs -f wordpress-5b4d6bd47c-bdtmw
 
 Welcome to the Bitnami wordpress container
@@ -491,7 +491,7 @@ INFO  ==> Starting wordpress...
 172.17.0.1 - - [27/Dec/2018:04:31:01 +0000] "GET /wp-includes/css/dist/block-library/style.min.css?ver=5.0.2 HTTP/1.1" 200 4281
 172.17.0.1 - - [27/Dec/2018:04:31:01 +0000] "GET /wp-content/themes/twentynineteen/style.css?ver=1.1 HTTP/1.1" 200 19371
 172.17.0.1 - - [27/Dec/2018:04:31:01 +0000] "GET /wp-content/themes/twentynineteen/print.css?ver=1.1 HTTP/1.1" 200 1230
-```
+{{< /highlight >}}
 
 And that folks is all I have for now, be sure to check out the [Ksonnet official documentation](https://ksonnet.io/docs/) and `ks help` to know more about what ksonnet can do to help you deploy your applications to any kubernetes cluster.
 

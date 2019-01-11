@@ -25,24 +25,24 @@ Once you have created your account and added your credit card you will get the $
 We will be working with the chat bot again you can see the original [article here](https://kainlite.github.io/blog/go_echobot/), and the repo [here](https://github.com/kainlite/echobot/tree/skaffold).
 
 Let's tell our kubectl to use our recently downloaded config:
-```plain
+{{< highlight yaml >}}
 $ export KUBECONFIG=/home/kainlite/Downloads/k8s-1-13-1-do-2-nyc1-1546545313076-kubeconfig.yaml
 $ kubectl get nodes -o wide
 
 NAME                 STATUS    ROLES     AGE       VERSION   EXTERNAL-IP       OS-IMAGE                       KERNEL-VERSION   CONTAINER-RUNTIME
 crazy-wozniak-8306   Ready     <none>    6h        v1.13.1   178.128.154.205   Debian GNU/Linux 9 (stretch)   4.9.0-8-amd64    docker://18.9.0
 crazy-wozniak-830t   Ready     <none>    6h        v1.13.1   167.99.224.115    Debian GNU/Linux 9 (stretch)   4.9.0-8-amd64    docker://18.9.0
-```
+{{< /highlight >}}
 Your config might have a slightly different name, but it should be similar. We can see in the output a lot of information about our nodes (workers).
 
 But let's cut to the chase, we are here for _Skaffold_:
-```plain
+{{< highlight yaml >}}
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v0.20.0/skaffold-linux-amd64 && chmod +x skaffold && sudo mv skaffold /usr/local/bin
-```
+{{< /highlight >}}
 You can install the binary using the provided line (linux) or downloading it from the [releases page](https://github.com/GoogleContainerTools/skaffold/releases).
 
 Once installed we can see the [examples](https://github.com/GoogleContainerTools/skaffold/tree/master/examples), I will be using the getting-started example:
-```
+{{< highlight yaml >}}
 apiVersion: skaffold/v1beta2
 kind: Config
 build:
@@ -52,11 +52,11 @@ deploy:
   kubectl:
     manifests:
       - k8s-*
-```
+{{< /highlight >}}
 With very litle YAML we can accomplish a lot.
 
 We need a manifest file that matches that pattern so skaffold can deploy/re-deploy our application, so let's generate one with `kubectl run echobot --image=kainlite/echobot --dry-run -o yaml`
-```plain
+{{< highlight yaml >}}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -86,11 +86,11 @@ spec:
             - '/bin/sh'
             - '-c'
             - '/app/health_check.sh'
-```
+{{< /highlight >}}
 The above command can be used to generate any kind of k8s resource :), I stripped it a bit, because there were fields that I didn't want in and added some that we need for it to work.
 
 Then the only thing left to do is testing that everything works properly:
-```plain
+{{< highlight yaml >}}
 $ skaffold build
 
 Starting build...
@@ -188,11 +188,11 @@ Build complete in 48.642618413s
 Starting test...
 Test complete in 9.15µs
 kainlite/echobot -> kainlite/echobot:fc03e3d-dirty-3541257
-```
+{{< /highlight >}}
 As we can see skaffold build not only did the docker build but also tagged and pushed the image to [docker hub](https://cloud.docker.com/repository/docker/kainlite/echobot/tags), which is really nice and really useful to build a CI/CD system with it.
 
 But wait, we need to deploy that to our cluster, right on:
-```plain
+{{< highlight yaml >}}
 $ skaffold deploy
 Starting build...
 Building [kainlite/echobot]...
@@ -265,25 +265,25 @@ kubectl client version: 1.10
 kubectl version 1.12.0 or greater is recommended for use with skaffold
 deployment.extensions "echobot" configured
 Deploy complete in 5.676513226s
-```
+{{< /highlight >}}
 Deploy does a lot like with gitkube, it build the image, pushes it to the registry and then makes the deployment to the cluster, as you can see in there skaffold relies on kubectl and I have an old version of it.
 
 After a few seconds we can see that our deployment has been triggered and we have a new pod being created for it.
-```plain
+{{< highlight yaml >}}
 $ kubectl get pods
 NAME                       READY     STATUS              RESTARTS   AGE
 echobot-57fdcccf76-4qwvq   0/1       ContainerCreating   0          5s
 echobot-6fcd78658c-njvpx   0/1       Terminating         0          9m
-```
+{{< /highlight >}}
 Skaffold also has another nice option that it's called _dev_ it watches the folder for changes and re-deploys the app so you can focus on code.
 
 Let's clean up and call it a day:
-```plain
+{{< highlight yaml >}}
 $ skaffold delete
 Cleaning up...
 deployment.extensions "echobot" deleted
 Cleanup complete in 3.833219278s
-```
+{{< /highlight >}}
 
 ### Notes
 I really liked the workflow that skaffold provides, I hope that I can use it some more in the near future. And remember to shutdown the kubernetes cluster if you are using Digital Ocean so you don't get charged by surprise later on.

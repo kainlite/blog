@@ -17,24 +17,24 @@ categories:
 This tutorial will show you how to create a simple chart and also how to deploy it to kubernetes using [Helm](https://helm.sh/), in the examples I will be using [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) or you can [check out this repo](https://github.com/kainlite/kainlite.github.io) that has a good overview of minikube, once installed and started (`minikube start`) that command will download and configure the local environment, you can follow with the following example:
 
 Create the chart:
-```bash
+{{< highlight yaml >}}
 helm create hello-world
-```
+{{< /highlight >}}
 Always use valid DNS names if you are going to have services, otherwise you will have issues later on.
 
 Inspect the contents, as you will notice every resource is just a kubernetes resource with some placeholders and basic logic to get something more reusable:
-```bash
+{{< highlight yaml >}}
 cd hello-world
 
 charts       <--- Dependencies, charts that your chart depends on.
 Chart.yaml   <--- Metadata mostly, defines the version of your chart, etc.
 templates    <--- Here is where the magic happens.
 values.yaml  <--- Default values file (this is used to replace in the templates at runtime)
-```
+{{< /highlight >}}
 Note: the following link explains the basics of [dependencies](https://docs.helm.sh/developing_charts/#managing-dependencies-manually-via-the-charts-directory), your chart can have as many dependencies as you need, the only thing that you need to do is add or install the other charts as dependencies.
 
 The file `values.yaml` by default will look like the following snippet:
-```
+{{< highlight yaml >}}
 replicaCount: 1
 
 image:
@@ -66,20 +66,20 @@ resources: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
-```
+{{< /highlight >}}
 
 The next step would be to check the `templates` folder:
-```bash
+{{< highlight yaml >}}
 deployment.yaml  <--- Standard kubernetes deployment with go templates variables.
 _helpers.tpl     <--- This file defines some common variables.
 ingress.yaml     <--- Ingress route, etc.
 NOTES.txt        <--- Once deployed this file will display the details of our deployment, usually login data, how to connect, etc.
 service.yaml     <--- The service that we will use internally and/or via ingress to reach our deployed service.
-```
+{{< /highlight >}}
 Go [templates](https://blog.gopheracademy.com/advent-2017/using-go-templates/) basics, if you need a refresher or a crash course in go templates, also always be sure to check Helm's own [documentation](https://github.com/helm/helm/blob/master/docs/chart_template_guide/functions_and_pipelines.md) and also some [tips and tricks](https://github.com/helm/helm/blob/master/docs/charts_tips_and_tricks.md).
 
 Let's check the [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) file:
-```
+{{< highlight yaml >}}
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
@@ -131,11 +131,11 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
-```
+{{< /highlight >}}
 As you can see everything will get replaced by what you define in the `values.yaml` file and everything is under `.Values` unless you define a local variable or some other variable using helpers for example.
 
 Let's check the [service](https://kubernetes.io/docs/concepts/services-networking/service/) file:
-```
+{{< highlight yaml >}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -155,10 +155,10 @@ spec:
   selector:
     app.kubernetes.io/name: {{ include "hello-world.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
-```
+{{< /highlight >}}
 
 Let's check the [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) file:
-```
+{{< highlight yaml >}}
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "hello-world.fullname" . -}}
 {{- $ingressPath := .Values.ingress.path -}}
@@ -197,11 +197,11 @@ spec:
               servicePort: http
   {{- end }}
 {{- end }}
-```
+{{< /highlight >}}
 The ingress file is one of the most interesting ones in my humble opinion because it has a if else example and also local variables (`$fullName` for example), also iterates over a possible slice of dns record names (hosts), and the same if you have certs for them (a good way to get let's encrypt certificates automatically is using cert-manager, in the next post I will expand on this example adding a basic web app with mysql and ssl/tls).
 
 After checking that everything is up to our needs the only thing missing is to finally deploy it to kubernetes (But first let's install tiller):
-```bash
+{{< highlight yaml >}}
 $ helm init
 $HELM_HOME has been configured at /home/gabriel/.helm.
 
@@ -211,11 +211,11 @@ Please note: by default, Tiller is deployed with an insecure 'allow unauthentica
 To prevent this, run `helm init` with the --tiller-tls-verify flag.
 For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
 Happy Helming!
-```
+{{< /highlight >}}
 Note that many of the complains that Helm receives are because of the admin-y capabilities that Tiller has. A good note on the security issues that Tiller can suffer and some possible mitigation alternatives can be found on the [Bitnami page](https://engineering.bitnami.com/articles/helm-security.html), this mostly applies to multi-tenant clusters. And also be sure to check [Securing Helm](https://docs.helm.sh/using_helm/#securing-your-helm-installation)
 
 Deploy our chart:
-```bash
+{{< highlight yaml >}}
 $ helm install --name my-nginx -f values.yaml .
 NAME:   my-nginx
 LAST DEPLOYED: Sun Dec 23 00:30:11 2018
@@ -240,19 +240,19 @@ NOTES:
   export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=hello-world,app.kubernetes.io/instance=my-nginx" -o jsonpath="{.items[0].metadata.name}")
   echo "Visit http://127.0.0.1:8080 to use your application"
   kubectl port-forward $POD_NAME 8080:80
-```
+{{< /highlight >}}
 Our deployment was successful and we can see that our pod is waiting to be scheduled.
 
 Let's check that our service is there:
-```bash
+{{< highlight yaml >}}
 $ kubectl get services
 NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
 kubernetes             ClusterIP   10.96.0.1       <none>        443/TCP   1h
 my-nginx-hello-world   ClusterIP   10.111.222.70   <none>        80/TCP    5m
-```
+{{< /highlight >}}
 
 And now we can test that everything is okay by running another pod in interactive mode, for example:
-```bash
+{{< highlight yaml >}}
 $ kubectl run -i --tty alpine --image=alpine -- sh
 If you don't see a command prompt, try pressing enter.
 
@@ -314,18 +314,18 @@ Commercial support is available at
 </body>
 </html>
 * Connection #0 to host my-nginx-hello-world left intact
-```
+{{< /highlight >}}
 And voila we see our nginx deployed there and accessible via service name to our other pods (this is fantastic for microservices).
 
 Our current deployment can be checked like this:
-```bash
+{{< highlight yaml >}}
 $ helm ls
 NAME            REVISION        UPDATED                         STATUS          CHART                   APP VERSION     NAMESPACE
 my-nginx        1               Sun Dec 23 00:30:11 2018        DEPLOYED        hello-world-0.1.0       1.0             default
-```
+{{< /highlight >}}
 
 The last example would be to upgrade our deployment, lets change the `tag` in the `values.yaml` file from `stable` to `mainline` and update also the metadata file (`Chart.yaml`) to let Helm know that this is a new version of our chart.
-```bash
+{{< highlight yaml >}}
  $ helm upgrade my-nginx . -f values.yaml
 Release "my-nginx" has been upgraded. Happy Helming!
 LAST DEPLOYED: Sun Dec 23 00:55:22 2018
@@ -352,49 +352,49 @@ NOTES:
   export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=hello-world,app.kubernetes.io/instance=my-nginx" -o jsonpath="{.items[0].metadata.name}")
   echo "Visit http://127.0.0.1:8080 to use your application"
   kubectl port-forward $POD_NAME 8080:80
-```
+{{< /highlight >}}
 Note that I always specify the -f values.yaml just for explicitness.
 
 It seems that our upgrade went well, let's see what Helm sees
-```bash
+{{< highlight yaml >}}
 $ helm ls
 NAME            REVISION        UPDATED                         STATUS          CHART                   APP VERSION     NAMESPACE
 my-nginx        2               Sun Dec 23 00:55:22 2018        DEPLOYED        hello-world-0.1.1       1.0             default
-```
+{{< /highlight >}}
 
 But before we go let's validate that it did deployed the nginx version that we wanted to have:
-```bash
+{{< highlight yaml >}}
 $ kubectl exec my-nginx-hello-world-c5cdcc95c-shgc6 -- /usr/sbin/nginx -v
 nginx version: nginx/1.15.7
-```
+{{< /highlight >}}
 At the moment of this writing mainline is 1.15.7, we could rollback to the previous version by doing:
-```
+{{< highlight yaml >}}
 $ helm rollback my-nginx 1
 Rollback was a success! Happy Helming!
-```
+{{< /highlight >}}
 Basically this command needs a deployment name `my-nginx` and the revision number to rollback to in this case `1`.
 
 Let's check the versions again:
-```bash
+{{< highlight yaml >}}
 $ kubectl exec my-nginx-hello-world-6f948db8d5-bsml2 -- /usr/sbin/nginx -v
 nginx version: nginx/1.14.2
-```
+{{< /highlight >}}
 
 Let's clean up:
-```bash
+{{< highlight yaml >}}
 $ helm del --purge my-nginx
 release "my-nginx" deleted
-```
+{{< /highlight >}}
 
 If you need to see what will be sent to the kubernetes API then you can use the following command (sometimes it's really useful for debugging or to inject a sidecar using pipes):
-```
+{{< highlight yaml >}}
 $ helm template . -name my-nginx -f values.yaml
 # Source: hello-world/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: ame-hello-world
-```
+{{< /highlight >}}
 
 And that folks is all I have for now, be sure to check own [Helm Documentation](https://docs.helm.sh/) and `helm help` to know more about what helm can do to help you deploy your applications to any kubernetes cluster.
 
