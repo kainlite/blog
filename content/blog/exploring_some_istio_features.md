@@ -221,7 +221,7 @@ spec:
 {{< /highlight >}}
 
 So he decided to check the book reviews again and boom, the ratings service was not available but everything else works just fine, this only applies for _jason_ everyone else will see the version without stars or the error message.
-{{< figure src="/img/istio-servicev1.png" width="100%" >}}
+{{< figure src="/img/istio-servicev3.png" width="100%" >}}
 
 ### Notes
 Istio seems an it is indeed really powerful, there many more features like:
