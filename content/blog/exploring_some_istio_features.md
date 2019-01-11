@@ -176,7 +176,7 @@ Not jason:
 
 jason:
 {{< figure src="/img/istio-servicev2.png" width="100%" >}}
-As you can see the difference in the v1 and v2 of the app are the stars below the reviews, but that is more than enough to indicate that it works, this is really for for beta testers you don't need or have to complicate your code but to add a header.
+As you can see the difference in the v1 and v2 of the app are the stars below the reviews, but that is more than enough to indicate that it works, this is really nice for beta testers you don't need or have to complicate your code but just add a header.
 
 ### Injecting an HTTP abort fault:
 This time we will inject a failure for our friend _jason_:
