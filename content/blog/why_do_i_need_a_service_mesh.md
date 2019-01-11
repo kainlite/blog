@@ -257,7 +257,7 @@ virtualservice.networking.istio.io "bookinfo" created
 ```
 In Istio a Gateway configures a load balancer for HTTP/TCP traffic, most commonly operating at the edge of the mesh to enable ingress traffic for an application (L4-L6).
 
-After that we need to set some environmnet variables to fetch the LB ip, port, etc.
+After that we need to set some environment variables to fetch the LB ip, port, etc.
 ```plain
 $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
@@ -266,7 +266,7 @@ $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 
 curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage
 ```
-If the latest curl returns 200 then we're good, you can also browse the app `open http://$\{GATEWAY_URL\}/productpage` and you will see something like the following image:
+If the latest curl returns 200 then we're good, you can also browse the app `open http://${GATEWAY_URL}/productpage` and you will see something like the following image:
 {{< figure src="/img/productpage-example.png" title="Product page example" width="100%" >}}
 
 Also you can use [Grafana](https://grafana.com/) to check some metrics about the service usage, etc. (You don't have to worry about prometheus since it's enabled by default). Spin up the port-forward so we don't have to expose grafana: to the world with: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000`, and then `open http://localhost:3000`.

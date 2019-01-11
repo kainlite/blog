@@ -406,8 +406,8 @@ The following posts will be about package managers, development deployment tools
 
 * [Expand on helm, search and install community charts](https://kainlite.github.io/blog/deploying_my_apps_with_helm/).
 * [Getting started with Ksonnet and friends](https://kainlite.github.io/blog/getting_started_with_ksonnet/)
-* Getting started with Skaffold.
-* Getting started with Gitkube.
+* [Getting started with Skaffold](https://kainlite.github.io/blog/getting_started_with_skaffold/).
+* [Getting started with Gitkube](https://kainlite.github.io/blog/getting_started_with_gitkube/).
 
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.
