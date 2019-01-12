@@ -404,10 +404,10 @@ DRY is a good design goal and part of the art of a good template is knowing when
 ### Upcoming topics
 The following posts will be about package managers, development deployment tools, etc. It's hard to put all the tools in a category, but they are trying to solve similar problems in different ways, and we will be exploring the ones that seem more promising to me, if you would like me to cover any other tool/project/whatever, just send me a message :)
 
-* [Expand on helm, search and install community charts](https://kainlite.github.io/blog/deploying_my_apps_with_helm/).
-* [Getting started with Ksonnet and friends](https://kainlite.github.io/blog/getting_started_with_ksonnet/)
-* [Getting started with Skaffold](https://kainlite.github.io/blog/getting_started_with_skaffold/).
-* [Getting started with Gitkube](https://kainlite.github.io/blog/getting_started_with_gitkube/).
+* [Expand on helm, search and install community charts]({{< ref "/blog/deploying_my_apps_with_helm" >}}).
+* [Getting started with Ksonnet and friends]({{< ref "/blog/getting_started_with_ksonnet" >}})
+* [Getting started with Skaffold]({{< ref "/blog/getting_started_with_skaffold" >}}).
+* [Getting started with Gitkube]({{< ref "/blog/getting_started_with_gitkube" >}}).
 
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.

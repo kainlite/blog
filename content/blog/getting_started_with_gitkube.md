@@ -21,7 +21,7 @@ In the examples I will be using [minikube](https://kubernetes.io/docs/tasks/tool
 
 ### Let's get started
 We're going to deploy or re-deploy our echo bot one more time but this time using gitkube.
-You can find the chat bot: [article here](https://kainlite.github.io/blog/go_echobot/), and the repo: [here](https://github.com/kainlite/echobot/tree/gitkube)
+You can find the chat bot: [article here]({{< ref "/blog/go_echobot" >}}), and the repo: [here](https://github.com/kainlite/echobot/tree/gitkube)
 
 First of all we need to install the gitkube binary in our machine and then the CRD in our kubernetes cluster:
 {{< highlight yaml >}}

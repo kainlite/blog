@@ -16,7 +16,7 @@ categories:
 
 
 ### Introduction
-This article builds up on what we did in the [last article](https://kainlite.github.io/blog/why_do_i_need_a_service_mesh/), so refer to that one before starting this one, if you are planing to follow the documentation examples you will find many similarities since I based this article on that.
+This article builds up on what we did in the [last article]({{< ref "/blog/why_do_i_need_a_service_mesh" >}}), so refer to that one before starting this one, if you are planing to follow the documentation examples you will find many similarities since I based this article on that.
 
 In this example I will be using [Digital Ocean](https://m.do.co/c/01d040b789de) (that's my referral link), note that I do not have any association with Digital Ocean but they give you $100 to test their products for 60 days, if you spend $25 I get another $25.
 

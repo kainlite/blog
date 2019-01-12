@@ -22,7 +22,7 @@ In this example I will be using [Digital Ocean](https://m.do.co/c/01d040b789de) 
 ### Let's get started
 Once you have created your account and added your credit card you will get the $100 of free credit, then you will have to go to Manage on the left side panel and click on Kubernetes, then create your cluster with the amount of nodes that you consider necessary but remember to power them off or delete these resources so you don't waste the free credit or your credit card itself. Once you have created your cluster and downloaded the kubectl config you're ready to go.
 
-We will be working with the chat bot again you can see the original [article here](https://kainlite.github.io/blog/go_echobot/), and the repo [here](https://github.com/kainlite/echobot/tree/skaffold).
+We will be working with the chat bot again you can see the original [article here]({{< ref "/blog/go_echobot" >}}), and the repo [here](https://github.com/kainlite/echobot/tree/skaffold).
 
 Let's tell our kubectl to use our recently downloaded config:
 {{< highlight yaml >}}
