@@ -4,7 +4,6 @@ date: 2019-01-12
 linktitle: My local environment
 title: My local environment
 highlight: true
-draft: true
 tags:
 - urxvt
 - vim
