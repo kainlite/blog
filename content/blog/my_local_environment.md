@@ -12,7 +12,6 @@ categories:
 - linux
 ---
 
-
 ### Introduction
 This article is about my current configuration, but I'm going to talk only about the terminal and my text editor because those will work in any linux distribution, I'm currently using **Arch Linux** and **AwesomeWM** (I used Gnome Shell previously, and Gnome 2 before that), you can find my [dotfiles here](https://github.com/kainlite/dotfiles) with all my configurations.
 
