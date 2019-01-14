@@ -42,6 +42,11 @@ licenselink = "https://github.com/kainlite/blog/blob/master/LICENSE.md"
 [outputs]
   home = ["html", "jsonfeed", "rss"]
 
+[params.logo]
+  url = "/img/logo.png"
+  width = 127
+  height = 40
+
 ## Main Menu
 [[menu.main]]
   name = "blog"
