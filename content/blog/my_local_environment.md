@@ -10,10 +10,15 @@ tags:
 - linux
 categories:
 - linux
+lua:
+  image:
+    url: "/img/terminal.png"
 ---
 
 ### Introduction
 This article is about my current configuration, but I'm going to talk only about the terminal and my text editor because those will work in any linux distribution, I'm currently using **Arch Linux** and **AwesomeWM** (I used Gnome Shell previously, and Gnome 2 before that), you can find my [dotfiles here](https://github.com/kainlite/dotfiles) with all my configurations.
+
+While my terminal doesn't look exactly like the one from the picture you can get something like that with [GBT](https://github.com/jtyr/gbt).
 
 ### Terminal
 My current terminal is **rxvt-unicode** and I'm pretty happy with it, it's relatively easy to configure and use, it looks like this:
@@ -51,6 +56,7 @@ It looks something like this, as you can see I have a small tmux pane in the bot
 * I'm also using zsh and [oh-my-zsh](https://ohmyz.sh/) with the theme agnoster. I really like zsh it's fast and has some nice features like autocomplete everywhere, but again this is a matter of taste.
 * I like to take advantage of all the space in the screen, that's why AwesomeWM fits great (even that I do not use the tiling feature a lot, tabs and full screen apps), with some minor configuration I'm able to do everything from the keyboard, I use the mouse when checking emails and things like that but otherwise the keyboard is more than enough.
 * I used cowsay and ponysay in the first screenshot so you can have an idea of how the terminal looks like.
+* If you are going to use unicode I recommend you to install the fonts from nerd-fonts.
 
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.
