@@ -25,7 +25,7 @@ Once you have created your account and added your credit card you will get the $
 We will be working with the chat bot again you can see the original [article here]({{< ref "/blog/go_echobot" >}}), and the repo [here](https://github.com/kainlite/echobot/tree/skaffold).
 
 Let's tell our kubectl to use our recently downloaded config:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ export KUBECONFIG=/home/kainlite/Downloads/k8s-1-13-1-do-2-nyc1-1546545313076-kubeconfig.yaml
 $ kubectl get nodes -o wide
 
@@ -36,13 +36,13 @@ crazy-wozniak-830t   Ready     <none>    6h        v1.13.1   167.99.224.115    D
 Your config might have a slightly different name, but it should be similar. We can see in the output a lot of information about our nodes (workers).
 
 But let's cut to the chase, we are here for _Skaffold_:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v0.20.0/skaffold-linux-amd64 && chmod +x skaffold && sudo mv skaffold /usr/local/bin
 {{< /highlight >}}
 You can install the binary using the provided line (linux) or downloading it from the [releases page](https://github.com/GoogleContainerTools/skaffold/releases).
 
 Once installed we can see the [examples](https://github.com/GoogleContainerTools/skaffold/tree/master/examples), I will be using the getting-started example:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 apiVersion: skaffold/v1beta2
 kind: Config
 build:
@@ -90,7 +90,7 @@ spec:
 The above command can be used to generate any kind of k8s resource :), I stripped it a bit, because there were fields that I didn't want in and added some that we need for it to work.
 
 Then the only thing left to do is testing that everything works properly:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ skaffold build
 
 Starting build...
@@ -192,7 +192,7 @@ kainlite/echobot -> kainlite/echobot:fc03e3d-dirty-3541257
 As we can see skaffold build not only did the docker build but also tagged and pushed the image to [docker hub](https://cloud.docker.com/repository/docker/kainlite/echobot/tags), which is really nice and really useful to build a CI/CD system with it.
 
 But wait, we need to deploy that to our cluster, right on:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ skaffold deploy
 Starting build...
 Building [kainlite/echobot]...
@@ -269,7 +269,7 @@ Deploy complete in 5.676513226s
 Deploy does a lot like with gitkube, it build the image, pushes it to the registry and then makes the deployment to the cluster, as you can see in there skaffold relies on kubectl and I have an old version of it.
 
 After a few seconds we can see that our deployment has been triggered and we have a new pod being created for it.
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ kubectl get pods
 NAME                       READY     STATUS              RESTARTS   AGE
 echobot-57fdcccf76-4qwvq   0/1       ContainerCreating   0          5s
@@ -278,7 +278,7 @@ echobot-6fcd78658c-njvpx   0/1       Terminating         0          9m
 Skaffold also has another nice option that it's called _dev_ it watches the folder for changes and re-deploys the app so you can focus on code.
 
 Let's clean up and call it a day:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ skaffold delete
 Cleaning up...
 deployment.extensions "echobot" deleted

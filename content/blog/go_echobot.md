@@ -90,7 +90,7 @@ func main() {
 As you can see it's the simplest example from the readme of the [Go Slack API](https://github.com/nlopes/slack) project, it only connects to Slack and when it reads a message if it's addressed to the bot then it echoes the message back, creating a bot and everything else is out of the scope of this article but it's really simple, you only need to create an app in the Slack workspace, set it as a bot and grab the token (there is a lot more that you can customize but that is the most basic procedure to get started with a bot), then you just invite it to any channel that you want and start interacting with it.
 
 Here you can see the `Dockerfile`, for security we create an app user for the build and for running it, and to save space and bandwidth we only ship what we need using a multi-stage build:
-{{< highlight yaml >}}
+{{< highlight docker >}}
 # Build
 FROM golang:1.11.2-alpine as builder
 
@@ -118,7 +118,7 @@ CMD ["/app/main"]
 There are a few more files in there, you can see the full sources [here](https://github.com/kainlite/echobot), for example `health_check.sh`, as our app doesn't listen on any port we need a way to tell kubernetes how to check if our app is alive.
 
 Okay, enough boilerplate let's get to business, so let's create a new ksonnet application:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ ks init echobot
 INFO Using context "minikube" from kubeconfig file "~/.kube/config"
 INFO Creating environment "default" with namespace "default", pointing to "version:v1.8.0" cluster at address "https://192.168.99.100:8443"
@@ -172,7 +172,7 @@ local resources = [deployment];
 k.core.v1.list.new(resources)
 {{< /highlight >}}
 Note that I have uploaded that image to docker hub so you can use it to follow the example if you want, after that just replace `really-long-token` with your token, and then do:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ ks apply default
 INFO Applying deployments echobot
 INFO Creating non-existent deployments echobot
@@ -183,7 +183,7 @@ And now if we check our deployment and pod, we should see something like this:
 ![Echo bot](/img/echobot.png)
 
 And in the logs:
-{{< highlight yaml >}}
+{{< highlight bash >}}
  $ kubectl get pods
 NAME                               READY     STATUS    RESTARTS   AGE
 echobot-7456f7d7dd-twg4r           1/1       Running   0          53s

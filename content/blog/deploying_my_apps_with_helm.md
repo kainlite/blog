@@ -18,17 +18,17 @@ If you are already familiar with [Helm](https://helm.sh/), and the different typ
 
 How do I search for charts?:
 
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ helm search wordpress
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
 stable/wordpress        3.3.0           4.9.8           Web publishing platform for building blogs and websites.
 {{< /highlight >}}
 Note that I'm not a fan of Wordpress or PHP itself, but it seems like the most common example everywhere. As we can see here it says stable/wordpress so we know that we're using the official repo in the folder stable, but what if we don't want that chart, but someone else provides one with more features or something that You like better. Let's use the one from [Bitnami](https://bitnami.com/stack/wordpress/helm), so if we check their page you can select different kind of deployments but for it to work we need to add another external repo:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 helm repo add bitnami https://charts.bitnami.com/bitnami
 {{< /highlight >}}
 So if we search again we will now see two options (at the moment of this writing, the latest version is actually 5.0.2):
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ helm search wordpress
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
 bitnami/wordpress       5.0.2           5.0.2           Web publishing platform for building blogs and websites.
@@ -45,13 +45,13 @@ ingress:
   enabled: true
 {{< /highlight >}}
 We will only change the blog name by default, the persistent volume size and also enable [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) (Our app should be available through `wordpress.local` inside the cluster), if you are using minikube be sure to enable the [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) addon.
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ minikube addons enable ingress
 ingress was successfully enabled
 {{< /highlight >}}
 
 We can then install `stable/wordpress` or `bitnami/wordpress`, we will follow up with the one from Bitnami repo.
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ helm install bitnami/wordpress \
 --set image.repository=bitnami/wordpress \
 --set image.tag=5.0.2 \
@@ -60,7 +60,7 @@ $ helm install bitnami/wordpress \
 As it's a common good practice to use specific versions we will do it here, it's better to do it this way because you can easily move between known versions and also avoid unknown states, this can happen by misunderstanding what latest means, [follow the example](https://medium.com/@mccode/the-misunderstood-docker-tag-latest-af3babfd6375).
 
 You should see something like:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 NAME:   plucking-condor
 LAST DEPLOYED: Mon Dec 24 13:06:38 2018
 NAMESPACE: default
@@ -115,7 +115,7 @@ Depending on the cluster provider or installation itself, you might need to repl
 At this point we should a working wordpress installation, also move between versions, but be aware that the application is in charge of the database schema and updating it to match what the new version needs, this can also be troublesome rolling back or when downgrading, so if you use persistent data *ALWAYS* have a working backup, because when things go south, you will want to quickly go back to a known state, also note that I said "working backup", yes, test that the backup works and that You can restore it somewhere else before doing anything destructive or that can has repercussions, this will bring you peace of mind and better ways to organize yourself while upgrading, etc.
 
 Now let's check that all resources are indeed working and that we can use our recently installed app.
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ kubectl get all
 NAME                                             READY     STATUS        RESTARTS   AGE
 pod/plucking-condor-mariadb-0                    1/1       Running       0          12m
@@ -138,7 +138,7 @@ statefulset.apps/plucking-condor-mariadb   1         1         12m
 You can deploy it to a custom namespace (In this case I deployed it to the default namespace), the only change for that would be to set the parameter `--namespace` in the `helm install` line.
 
 If you use minikube then ingress will expose a nodeport that we can find using `minikube service list` then using the browser or curl to navigate our freshly installed wordpress.
-{{< highlight yaml >}}
+{{< highlight bash >}}
  $ minikube service list
 |-------------|---------------------------|--------------------------------|
 |  NAMESPACE  |           NAME            |              URL               |
@@ -163,7 +163,7 @@ Sample screenshot:
 As long as we have the [persistent volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) our data should be preserved in this case the PV is used for tha database, but we could add another volume to preserve images, etc.
 
 Clean everything up:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 helm del --purge plucking-condor
 {{< /highlight >}}
 

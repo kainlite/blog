@@ -32,13 +32,13 @@ In case you don't agree with my explanations that's ok, this is a TL;DR version 
 
 ### Let's get started
 First of all we need to download and install Istio in our cluster, the recommended way of doing it is using helm (In this case I will be using the no Tiller alternative, but it could be done with helm install as well, check here for [more info](https://istio.io/docs/setup/kubernetes/helm-install/)):
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ curl -L https://git.io/getLatestIstio | sh -
 {{< /highlight >}}
 This will download and extract the latest release, in this case 1.0.5 at this moment.
 
 So let's install Istio... only pay attention to the first 3 commands, then you can skip until the end of the code block, I post all the output because I like full examples :)
-{{< highlight yaml >}}
+{{< highlight bash >}}
 istio-1.0.5 $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system --set grafana.enabled=true > $HOME/istio.yaml
 istio-1.0.5 $ kubectl create namespace istio-system
 namespace "istio-system" created
@@ -181,7 +181,7 @@ destinationrule.networking.istio.io "istio-telemetry" created
 WOAH, What did just happen?, a lot of new resources were created, basically we just generated the manifest from the helm chart and applied that to our cluster.
 
 So lets see what's running and what that means:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ kubectl get pods -n istio-system
 NAME                                      READY     STATUS      RESTARTS   AGE
 istio-citadel-856f994c58-l96p8            1/1       Running     0          3m
@@ -211,7 +211,7 @@ Note: The service mesh is not an overlay network. It simplifies and enhances how
 **Galley**: Central component for validating, ingesting, aggregating, transforming and distributing config within Istio.
 
 Ok so, a lot of new things were installed but how do I know it's working? let's deploy a [test application](https://istio.io/docs/examples/bookinfo/) and check it:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ export PATH="$PATH:~/istio-1.0.5/bin"
 istio-1.0.5/samples/bookinfo $ kubectl apply -f <(istioctl kube-inject -f platform/kube/bookinfo.yaml)
 service "details" created
@@ -226,7 +226,7 @@ service "productpage" created
 deployment.extensions "productpage-v1" created
 {{< /highlight >}}
 That command not only deployed the application but injected the Istio sidecar to each pod:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ kubectl get pods
 NAME                              READY     STATUS    RESTARTS   AGE
 details-v1-8bd954dbb-zhrqq        2/2       Running   0          2m
@@ -239,7 +239,7 @@ reviews-v3-74458c4889-kr4wb       2/2       Running   0          2m
 As we can see each pod has 2 containers in it, the app container and istio-proxy. You can also configure [automatic sidecar injection](https://istio.io/docs/setup/kubernetes/sidecar-injection/#automatic-sidecar-injection).
 
 Also all services are running:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ kubectl get services
 NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 details       ClusterIP   10.245.134.179   <none>        9080/TCP   3m
@@ -250,7 +250,7 @@ reviews       ClusterIP   10.245.77.125    <none>        9080/TCP   3m
 {{< /highlight >}}
 
 But how do I access the app?
-{{< highlight yaml >}}
+{{< highlight bash >}}
 istio-1.0.5/samples/bookinfo $ kubectl apply -f networking/bookinfo-gateway.yaml
 gateway.networking.istio.io "bookinfo-gateway" created
 virtualservice.networking.istio.io "bookinfo" created
@@ -258,7 +258,7 @@ virtualservice.networking.istio.io "bookinfo" created
 In Istio a Gateway configures a load balancer for HTTP/TCP traffic, most commonly operating at the edge of the mesh to enable ingress traffic for an application (L4-L6).
 
 After that we need to set some environment variables to fetch the LB ip, port, etc.
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
 $ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')

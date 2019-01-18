@@ -51,7 +51,7 @@ Phew, that's a lot of names and terminology at once, let's get started with the 
 
 ### Let's get started
 This command will generate the following folder structure `ks init wordpress`:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 INFO Using context "minikube" from kubeconfig file "~/.kube/config"
 INFO Creating environment "default" with namespace "default", pointing to "version:v1.12.4" cluster at address "https://192.168.99.100:8443"
 INFO Generating ksonnet-lib data at path '~/k8s-examples/wordpress/lib/ksonnet-lib/v1.12.4'
@@ -65,7 +65,7 @@ vendor          <--- Here is where the installed packages/apps go, it can be see
 {{< /highlight >}}
 
 Let's generate a _deployed-service_ and inspect it's context:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ ks generate deployed-service wordpress \
   --image bitnami/wordpress:5.0.2 \
   --type ClusterIP
@@ -200,7 +200,7 @@ We will see what our package will generate in *YAML* with some good defaults. An
 But that's not enough to run wordpress is it?, No is not, we need a database with persistent storage for it to work properly, so we will need to generate and extend another _deployed-service_.
 
 The next step would be to create another component:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ ks generate deployed-service mariadb \
   --image bitnami/mariadb:10.1.37 \
   --type ClusterIP
@@ -429,7 +429,7 @@ The only things that changed here are `spec.containers.env`, `spec.containers.vo
 This post only scratched the surface of what Ksonnet and Jsonnet can do, in another post I will describe more advances features with less _JSON_ / _YAML_. There are a lot of things that can be improved and we will cover those things in the next post, if you want to see all the source code for this post go [here](https://github.com/kainlite/ksonnet-wordpress-example).
 
 Let's clean up `ks delete default`:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 INFO Deleting services mariadb
 INFO Deleting deployments mariadb
 INFO Deleting services wordpress
@@ -443,7 +443,7 @@ If you want to check the wordpress installation via browser you can do `minikube
 I'm not aware if Ksonnet supports releases and rollbacks like Helm, but it seems it could be emulated using git tags and just some git hooks.
 
 If everything goes well, you should see something like this in the logs:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ kubectl logs -f wordpress-5b4d6bd47c-bdtmw
 
 Welcome to the Bitnami wordpress container

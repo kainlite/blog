@@ -26,7 +26,7 @@ My current terminal is **rxvt-unicode** and I'm pretty happy with it, it's relat
 And the configuration file can be [found here](https://github.com/kainlite/dotfiles/blob/master/.Xresources), note that even if you don't like Ponys by any reason, it's useful to test colors in the terminal.
 
 It's different than other terminals I have tried in the way it manages and uses the configuration, it uses an additional tool called `xrdb` (X server resource database utility) to manage the configuration provided in the configuration file `.Xresources`.
-{{< highlight yaml >}}
+{{< highlight bash >}}
 # Loads the configuration from Xresources in xrdb
 $ xrdb -merge .Xresources
 

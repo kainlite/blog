@@ -29,7 +29,7 @@ These basic concepts will help you understand the manifest that we are going to 
 
 ### Let's get started
 We already have the bookinfo project deployed and using all three versions of the service (ratings) but we will need to make some changes to test route based on user identity, you can check the configuration with:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ kubectl get destinationrules -o yaml
 apiVersion: v1
 items:
@@ -134,7 +134,7 @@ metadata:
 {{< /highlight >}}
 There we have all the destination rules, and now we need to apply the new manifest that will send everything to the version 1 and the user _jason_ to the version 2 of the reviews microservice.
 
-{{< highlight yaml >}}
+{{< highlight bash >}}
 istio-1.0.5/samples/bookinfo $ kubectl apply -f networking/virtual-service-reviews-test-v2.yaml
 virtualservice.networking.istio.io "reviews" created
 
@@ -180,7 +180,7 @@ As you can see the difference in the v1 and v2 of the app are the stars below th
 
 ### Injecting an HTTP abort fault:
 This time we will inject a failure for our friend _jason_:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 istio-1.0.5/samples/bookinfo $ kubectl apply -f networking/virtual-service-ratings-test-abort.yaml
 virtualservice.networking.istio.io "ratings" created
 

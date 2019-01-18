@@ -24,7 +24,7 @@ We're going to deploy or re-deploy our echo bot one more time but this time usin
 You can find the chat bot: [article here]({{< ref "/blog/go_echobot" >}}), and the repo: [here](https://github.com/kainlite/echobot/tree/gitkube)
 
 First of all we need to install the gitkube binary in our machine and then the CRD in our kubernetes cluster:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ kubectl create -f https://storage.googleapis.com/gitkube/gitkube-setup-stable.yaml
 customresourcedefinition.apiextensions.k8s.io "remotes.gitkube.sh" created
 serviceaccount "gitkube" created
@@ -39,13 +39,13 @@ service "gitkubed" exposed
 Note that there are 2 ways to install gitkube into our cluster, using the manifests as displayed there or using the gitkube binary and doing `gitkube install`.
 
 To install the gitkube binary, the easiest way is to do:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 curl https://raw.githubusercontent.com/hasura/gitkube/master/gimme.sh | sudo bash
 {{< /highlight >}}
 This will download and copy the binary into: `/usr/local/bin`, as a general rule I recommend reading whatever you are going to pipe into bash in your terminal to avoid potential dangers of _the internet_.
 
 Then we need to generate (and then create it in the cluster) a file called `remote.yaml` (or any name you like), it's necessary in order to tell gitkube how to deploy our application once we `git push` it:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ gitkube remote generate -f remote.yaml
 Remote name: minikube
 namespace: default
@@ -96,7 +96,7 @@ status:
 There are a few details to have in mind here, the _deployment_ name because gitkube expects a deployment to be already present with that name in order to update/upgrade it, the path to the Dockerfile, or helm chart, credentials for the registry if any, I'm using a public image, so we don't need any of that. The _wizard_ will let you choose and customize a few options for your deployment.
 
 The last step would be to finally create the resource:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ gitkube remote create -f remote.yaml
 INFO[0000] remote minikube created
 INFO[0000] waiting for remote url
@@ -108,7 +108,7 @@ INFO[0000] remote url: ssh://default-minikube@10.98.213.202/~/git/default-miniku
 {{< /highlight >}}
 
 After adding the new remote called _minikube_  we have everything ready to go, so let's test it and see what happens:
-{{< highlight yaml >}}
+{{< highlight bash >}}
 $ git push minikube master
 Enumerating objects: 10, done.
 Counting objects: 100% (10/10), done.
@@ -207,7 +207,7 @@ To ssh://10.98.213.202/~/git/default-minikube
 Quite a lot happened there, first of all gitkubed checked out the commit from the branch or HEAD that we pushed to `/home/default-minikube/build/default-minikube` and then started building and tagged the docker image with the corresponding SHA, after that it pushed the image to [docker hub](https://cloud.docker.com/u/kainlite/repository/docker/kainlite/default-minikube-default.echobot-echobot) and then updated the deployment that we already had in there for the echo bot.
 
 The last step would be to verify that the pod was actually updated, so we can inspect the pod configuration with `kubectl describe pod echobot-654cdbfb99-g4bwv`:
-{{< highlight yaml >}}
+{{< highlight bash >}}
  $ kubectl describe pod echobot-654cdbfb99-g4bwv
 Name:               echobot-654cdbfb99-g4bwv
 Namespace:          default
