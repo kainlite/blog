@@ -7,6 +7,7 @@
   {{- else -}}
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content="{{ with .Site.Params.image }}{{ .url | absURL }}{{ else }}{{ with .Site.Params.logo }}{{ .url | absURL }}{{ end }}{{ end }}" />
+<meta name="twitter:image:src" content="{{ with .Site.Params.image }}{{ .url | absURL }}{{ else }}{{ with .Site.Params.logo }}{{ .url | absURL }}{{ end }}{{ end }}" />
   {{- end }}
 {{- else -}}
   {{ if ge (.Param "lua.image.width") 300 -}}
@@ -15,6 +16,7 @@
   {{- else -}}
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content="{{ with .Param "lua.image" }}{{ .url | absURL }}{{ else }}{{ with .Site.Params.logo }}{{ .url | absURL }}{{ end }}{{ end }}" />
+<meta name="twitter:image:src" content="{{ with .Param "lua.image" }}{{ .url | absURL }}{{ else }}{{ with .Site.Params.logo }}{{ .url | absURL }}{{ end }}{{ end }}" />
   {{- end }}
 {{- end }}
 {{ with .Site.Params.twitter -}}
