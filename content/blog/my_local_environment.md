@@ -8,6 +8,7 @@ tags:
 - urxvt
 - vim
 - linux
+- tmux
 categories:
 - linux
 lua:
