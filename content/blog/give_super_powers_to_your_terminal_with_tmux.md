@@ -13,7 +13,7 @@ categories:
 - linux
 lua:
   image:
-    url: "/img/terminal.png"
+    url: "/img/tmux-terminal.png"
 ---
 
 ### **Introduction**
