@@ -315,7 +315,7 @@ func main() {
 	if Env == "production" {
 		lambda.Start(HandleRequest)
 	} else {
-	        // this environment variables are used locally while debugging, it can be quite handy
+		// this environment variables are used locally while debugging, it can be quite handy
 		if err := godotenv.Load(); err != nil {
 			log.Fatal("Error loading .env file")
 		}
@@ -451,7 +451,7 @@ serverless invoke -f tweet
 # null
 {{< /highlight >}}
 Wait, where did tweet came from?, if you look at the serverless manifest you will see that our function is called tweet. If everything went well you will be able to see that tweet in your profile, something like this:
-{{< figure src="/img/twitter-tbo.png" width="100%" >}}
+{{< figure src="/img/twitter-tbo.png" class="zoom" width="100%" >}}
 
 ### Notes
 * Why TBO, what's tbo? bot misspelled.

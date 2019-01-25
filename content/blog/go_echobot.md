@@ -180,7 +180,7 @@ INFO Creating non-existent deployments echobot
 
 And now if we check our deployment and pod, we should see something like this:
 
-![Echo bot](/img/echobot.png)
+{{< figure src="/img/echobot.png" class="zoom" width="100%" >}}
 
 And in the logs:
 {{< highlight bash >}}

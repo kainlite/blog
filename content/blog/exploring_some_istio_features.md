@@ -172,10 +172,10 @@ spec:
 What's going on here, how Istio knows what user is logged in?, well, the app adds a header called end-user and value _jason_ then the route will be used, it's a nifty trick.
 
 Not jason:
-{{< figure src="/img/istio-servicev1.png" width="100%" >}}
+{{< figure src="/img/istio-servicev1.png" class="zoom" width="100%" >}}
 
 jason:
-{{< figure src="/img/istio-servicev2.png" width="100%" >}}
+{{< figure src="/img/istio-servicev2.png" class="zoom" width="100%" >}}
 As you can see the difference in the v1 and v2 of the app are the stars below the reviews, but that is more than enough to indicate that it works, this is really nice for beta testers you don't need or have to complicate your code but just add a header.
 
 ### Injecting an HTTP abort fault:
@@ -221,7 +221,7 @@ spec:
 {{< /highlight >}}
 
 So he decided to check the book reviews again and boom, the ratings service was not available but everything else works just fine, this only applies for _jason_ everyone else will see the version without stars or the error message.
-{{< figure src="/img/istio-servicev3.png" width="100%" >}}
+{{< figure src="/img/istio-servicev3.png" class="zoom" width="100%" >}}
 
 ### Notes
 Istio seems an it is indeed really powerful, there many more features like:

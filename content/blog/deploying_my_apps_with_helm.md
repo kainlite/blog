@@ -157,7 +157,7 @@ In the cloud or on premises this will indeed be different and you should have a 
 
 Sample screenshot:
 
-![Wordpress example](/img/wordpress-example.png)
+{{< figure src="/img/wordpress-example.png" class="zoom" width="100%" >}}
 
 ### Notes
 As long as we have the [persistent volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) our data should be preserved in this case the PV is used for tha database, but we could add another volume to preserve images, etc.

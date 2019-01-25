@@ -622,13 +622,13 @@ Wait a few moments and verify.
 ### **Results**
 
 **The ALB**
-{{< figure src="/img/aws-alb-listeners.png" width="100%" >}}
+{{< figure src="/img/aws-alb-listeners.png" class="zoom" width="100%" >}}
 
 **The DNS records**
-{{< figure src="/img/aws-alb-route53-records.png" width="100%" >}}
+{{< figure src="/img/aws-alb-route53-records.png" class="zoom" width="100%" >}}
 
 **And the app**
-{{< figure src="/img/aws-alb-result.png" width="100%" >}}
+{{< figure src="/img/aws-alb-result.png" class="zoom" width="100%" >}}
 
 ### **Clean up**
 Remember this is not free, and if you don't want to get charged after you're done testing just shutdown and delete everything.

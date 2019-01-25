@@ -4,5 +4,9 @@
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:image" content="{{ with .Param "lua.image" }}{{ .url | absURL }}{{ else }}{{ with .Site.Params.logo }}{{ .url | absURL }}{{ end }}{{ end }}?{{ now.Unix }}" />
 
+{{ range .Params.tags }}
+<meta property="article:tag" content="{{- . -}}" />
+{{- end }}
+
 {{ with .Site.Language }}<meta property="og:locale" content="{{ .Lang }}" />{{ end }}
 {{ with .Site.Params.facebook.appid }}<meta property="fb:app_id" content="{{ . }}" />{{ end }}

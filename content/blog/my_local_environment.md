@@ -23,7 +23,7 @@ While my terminal doesn't look exactly like the one from the picture you can get
 
 ### Terminal
 My current terminal is **rxvt-unicode** and I'm pretty happy with it, it's relatively easy to configure and use, it looks like this:
-{{< figure src="/img/urxvt.png" width="100%" >}}
+{{< figure src="/img/urxvt.png" class="zoom" width="100%" >}}
 And the configuration file can be [found here](https://github.com/kainlite/dotfiles/blob/master/.Xresources), note that even if you don't like Ponys by any reason, it's useful to test colors in the terminal.
 
 It's different than other terminals I have tried in the way it manages and uses the configuration, it uses an additional tool called `xrdb` (X server resource database utility) to manage the configuration provided in the configuration file `.Xresources`.
@@ -51,7 +51,7 @@ As my text editor I really like and enjoy using Vim, there is always something t
 As a plugin manager I use [Plug](https://github.com/kainlite/dotfiles/blob/master/.vimrc.bundles) even that it's not really necessary with Vim 8, but that is a matter of taste I guess. You can see my full vim configuration [here](https://github.com/kainlite/dotfiles/blob/master/.vimrc).
 
 It looks something like this, as you can see I have a small tmux pane in the bottom with Hugo _compiling_ the site after every save and live reloading it in my browser:
-{{< figure src="/img/vim.png" width="100%" >}}
+{{< figure src="/img/vim.png" class="zoom" width="100%" >}}
 
 ### Notes
 * I'm also using zsh and [oh-my-zsh](https://ohmyz.sh/) with the theme agnoster. I really like zsh it's fast and has some nice features like autocomplete everywhere, but again this is a matter of taste.

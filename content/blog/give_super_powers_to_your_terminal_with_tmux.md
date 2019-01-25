@@ -38,10 +38,10 @@ bind C-a send-prefix
 
 ##### **Example**
 You can print the numbers of the panes with `CTRL-a q`, and you can navigate windows and panes as a list with `CTRL-a w`.
-{{< figure src="/img/tmux-windows-panes.png" width="100%" >}}
+{{< figure src="/img/tmux-windows-panes.png" class="zoom" width="100%" >}}
 
 I usually like to have 3 panes, something like this:
-{{< figure src="/img/tmux-sample-usage.png" width="100%" >}}
+{{< figure src="/img/tmux-sample-usage.png" class="zoom" width="100%" >}}
 I can edit the code or whatever in the pane 0, run commands if I need to in the pane 1, and have the webserver or code compiler, etc in the pane 2. This is very handy because I can write and test things at the same time without leaving the keyboard, or look at 2 different projects/files/etc side by side.
 
 With `tmux ls` we can list active sessions, also tmux has a command mode (`CTRL-a :`) like Vim, where you can issue some commands or change settings on the fly, for example instead of executing `tmux ls`, you can get the same information doing `CTRL-a :` and then `ls<CR>`.
@@ -136,7 +136,7 @@ set-window-option -g window-status-current-format '#[bg=yellow] #I#[bg=yellow] #
 {{< /highlight >}}
 
 ##### **Copy/paste**
-{{< figure src="/img/tmux-vi-mode.png" width="100%" >}}
+{{< figure src="/img/tmux-vi-mode.png" class="zoom" width="100%" >}}
 Tmux also supports the vi-copy mode, you can enter this mode with `CTRL-a ESC`, then pressing `v` for normal selection or `V` for line selection you can mark and copy with `Y` (by default is `ENTER` aka `<CR>`).
 
 And as you can imagine you can paste with `CTRL-a p`, this is really handy when copying from one pane to another or from one window to another, in Vim I recommend you `:set paste!` before pasting into it, so it doesn't try to format, etc.

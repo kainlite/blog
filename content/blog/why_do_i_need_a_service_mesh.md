@@ -267,7 +267,7 @@ $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage
 {{< /highlight >}}
 If the latest curl returns 200 then we're good, you can also browse the app `open http://${GATEWAY_URL}/productpage` and you will see something like the following image:
-{{< figure src="/img/productpage-example.png" title="Product page example" width="100%" >}}
+{{< figure src="/img/productpage-example.png" class="zoom" width="100%" >}}
 
 Also you can use [Grafana](https://grafana.com/) to check some metrics about the service usage, etc. (You don't have to worry about prometheus since it's enabled by default). Spin up the port-forward so we don't have to expose grafana: to the world with: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000`, and then `open http://localhost:3000`.
 

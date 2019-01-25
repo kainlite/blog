@@ -31,9 +31,14 @@
     {{ `<!--[if lt IE 9]>
                         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
                         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-                <![endif]-->` | safeHTML }}
+        <![endif]-->` | safeHTML }}
 
-    {{ template "_internal/google_analytics.html" . }}
+
+	<!-- Pour Google Analytics sauf mode dev server -->
+	{{- if not .Site.IsServer -}}
+	  {{ template "_internal/google_analytics.html" . }}
+	{{- end -}}
+
     {{ partial "site-meta.html" . }}
     {{ partial "site-opengraph.html" . }}
     {{ partial "site-twittercard.html" . }}
