@@ -1,12 +1,13 @@
 ---
 author: "Gabriel Garrido"
 date: 2019-01-25
-linktitle: Host your static website in Github
-title: Host your static website in Github
+linktitle: Serve your static website in Github
+title: Serve your static website in Github
 highlight: true
 tags:
 - development
 - serverless
+- git
 categories:
 - serverless
 lua:
@@ -16,8 +17,9 @@ draft: true
 ---
 
 ### **Introduction**
+Github offers static web hosting for you and your apps, you can use markdown (jekyll or just plain html), for example for this blog I generate all the files with Hugo.io and that gets deployed to Github Pages, the configuration is fairly simple as we will see in the following example (this blog).
 
-### ****
+### **Pages**
 
 ##### ****
 
