@@ -26,7 +26,7 @@ The first step in order to use GH Pages is to create a repo (assuming that you a
 This repo already has the blog files, but as with any github repo you will see the default commands to push something to it, the next step is to configure the pages itself, for that you need to go to [Settings](https://github.com/username/username.github.io/settings) (be sure to replace username in the link), then scroll down to the GitHub Pages section. It will look something like this:
 
 {{< figure src="/img/github-pages-configuration.png" width="100%" >}}
-As you can see the configuration is fairly simple, you choose the branch that will be used to serve the site, you can even pick a theme if you are going to go with Jekyll, and you can also have a custom domain and https, in this case as I push the static html to the master branch.
+As you can see the configuration is fairly simple, you choose the branch that will be used to serve the site, you can even pick a theme if you are going to go with Jekyll, and you can also have a custom domain and https, in this case as I push the static html files to the master branch I selected that branch, you can have any branch you like but it's common to use gh-pages.
 
 ##### **DNS**
 For the custom domain you need to create the following entries in your DNS `dig techsquad.rocks`, you can find these ips in [this page](https://help.github.com/articles/setting-up-an-apex-domain/):
