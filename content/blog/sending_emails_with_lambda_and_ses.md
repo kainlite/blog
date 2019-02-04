@@ -289,7 +289,7 @@ serverless invoke -f send_mail -d '{ "Email": "kainlite@gmail.com", "Message": "
 {{< /highlight >}}
 After hitting enter the message popped up right away in my inbox :).
 
-**Another option is to use [curl](https://devhints.io/curl)**
+**Another option is to use [httpie](https://devhints.io/httpie)**
 {{< highlight bash >}}
 echo '{ "email": "kainlite@gmail.com", "message": "test2" }' | http https://m8ebtlirjg.execute-api.us-east-1.amazonaws.com/prod/sendMail
 # OUTPUT:
@@ -309,7 +309,7 @@ echo '{ "email": "kainlite@gmail.com", "message": "test2" }' | http https://m8eb
 # sent!
 {{< /highlight >}}
 
-**OR [httpie](https://devhints.io/httpie)**
+**OR [curl](https://devhints.io/curl)**
 {{< highlight bash >}}
 curl -i -X POST https://m8ebtlirjg.execute-api.us-east-1.amazonaws.com/prod/sendMail -d '{ "email": "kainlite@gmail.com", "message": "test3" }'
 # OUTPUT:
