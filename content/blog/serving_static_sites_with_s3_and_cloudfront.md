@@ -16,6 +16,11 @@ lua:
     url: "/img/serve-s3-cloudfront.png"
 ---
 
+### **Serverless series**
+Part I: [Serving static websites with s3 and cloudfront]({{< ref "/blog/serving_static_sites_with_s3_and_cloudfront" >}}), **You're here**.
+
+Part II: [Sending emails with AWS Lambda and SES from a HTML form]({{< ref "/blog/sending_emails_with_lambda_and_ses" >}})
+
 ##### **Introduction**
 This article will be part of a series, the idea is to get a fully serverless site up and running with login functionality, maybe a profile page, and some random utility, but as we are just starting with it we will host our first draft of the page with a contact form, for the distribution of the files we will see how to configure CloudFront and for storing the files we will be using S3, S3 is an object storage service that offers industry leading scalability, data availability, security and performance, and CloudFront is a fast content delivery network (CDN). The site that we will be using were written using [elm](https://elm-lang.org/) and can be [found here](https://github.com/kainlite/aws-serverless-s3-elm-example).
 
@@ -86,7 +91,7 @@ We will use this file to create our CF distribution (save it as distconfig.json 
     "Quantity": 1,
     "Items": [
       "serverless.techsquad.rocks"
-	 ]
+         ]
    },
   "DefaultRootObject": "index.html",
   "Origins": {
