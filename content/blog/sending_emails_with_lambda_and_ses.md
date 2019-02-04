@@ -1,8 +1,8 @@
 ---
 author: "Gabriel Garrido"
 date: 2019-02-03
-linktitle: Sending emails with AWS Lambda and SES from a HTML form.
-title: Sending emails with AWS Lambda and SES from a HTML form.
+linktitle: Sending emails with AWS Lambda and SES from a HTML form
+title: Sending emails with AWS Lambda and SES from a HTML form
 highlight: true
 tags:
 - development
