@@ -7,7 +7,6 @@ highlight: true
 tags:
 - development
 - serverless
-- git
 - linux
 categories:
 - serverless
