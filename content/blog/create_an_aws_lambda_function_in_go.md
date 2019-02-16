@@ -207,6 +207,9 @@ curl -v https://r8efasfb26.execute-api.us-east-1.amazonaws.com/default/helloworl
 
 If you ask me that was a lot of effort to handle without automation, maybe AWS SAM or the serverless framework can make things easier and let you focus on your application rather than the boilerplate required for it to run.
 
+### Clean up
+Always remember to clean up and delete everything that you created (to avoid surprises and save money), in this article I will leave that as an exercise for the reader :)
+
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.
 
