@@ -7,6 +7,7 @@ highlight: true
 tags:
 - development
 - serverless
+- go
 categories:
 - serverless
 lua:
