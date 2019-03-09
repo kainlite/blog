@@ -31,16 +31,16 @@ I extracted a portion of the meaning of parameter from the man page, but in a nu
 -R Specifies that connections to the given TCP port or Unix socket on the remote (server) host are to be forwarded to the local side.
 {{< /highlight >}}
 
-**Server configuration**
+##### **Server configuration**
 There are two configuration parameters that can change the behaviour of remote and local forwarded ports, those parameters are `GatewayPorts` and `AllowTcpForwarding`.
 
-**GatewayPorts**
+##### **GatewayPorts**
 By default this option is `no` which means that only the remote computer will be able to connect to the forwarded port, you can set it to `yes` or `clientspecified` to allow other machines use that remote port-forward (handy and dangerous).
 
-**AllowTcpForwarding**
+##### **AllowTcpForwarding**
 By default this option is set to `yes`, you can restrict remote and local port forwarding by setting it to `no` or allow only local by setting it to `local`.
 
-### Closing notes
+### **Closing notes**
 As you can see this option can be really handy to bypass firewalls for example or have a temporary port forward, also if you want to make this automatic and not so temporary you can check autossh. You can use nc (netcat) if you don't want to install anything to test the connections and the tunnels (nc -l -p PORT) in the server side and (nc HOST PORT) in the client.
 
 ### Errata

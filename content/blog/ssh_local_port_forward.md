@@ -18,7 +18,7 @@ SSH is a great tool not only to connect and interact with remote servers, in thi
 ##### **Explanation**
 Local port forward basically let's you forward one port from a remote machine to your local machine, for example you want to connect to a remote service from machine but just temporarily or there is a firewall that won't let you do it, let's say you want to connect to a mysql instance on the default port (3306).
 
-**The command**
+##### **The command**
 {{< highlight bash >}}
 ssh -Nn -L 3306:localhost:3306 user@example.com
 {{< /highlight >}}
@@ -30,7 +30,7 @@ ssh -Nn -L 3306:172.16.16.200:3306 user@example.com
 {{< /highlight >}}
 This will give you access to the ip 172.16.16.200 and port 3306 in the remote network.
 
-**The parameters and their meaning**
+##### **The parameters and their meaning**
 I extracted a portion of the meaning of parameter from the man page, but in a nutshell it means local port forward without a shell.
 {{< highlight text >}}
 -N Do not execute a remote command. This is useful for just forwarding ports.
@@ -38,13 +38,13 @@ I extracted a portion of the meaning of parameter from the man page, but in a nu
 -L Specifies that connections to the given TCP port or Unix socket on the local (client) host are to be forwarded to the given host and port, or Unix socket, on the remote side.
 {{< /highlight >}}
 
-**Server configuration**
+##### **Server configuration**
 There is a configuration parameter that can change the behaviour of remote and local forwarded ports, that parameter is `AllowTcpForwarding`.
 
-**AllowTcpForwarding**
+##### **AllowTcpForwarding**
 By default this option is set to `yes`, you can restrict remote and local port forwarding by setting it to `no` or allow only local by setting it to `local`.
 
-### Closing notes
+##### **Closing notes**
 As you can see this option can be really handy to bypass firewalls for example or have a temporary port forward, also if you want to make this automatic and not so temporary you can check autossh. You can use nc (netcat) if you don't want to install anything to test the connections and the tunnels (nc -l -p PORT) in the server side and (nc HOST PORT) in the client.
 
 ### Errata
