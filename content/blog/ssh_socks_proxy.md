@@ -30,7 +30,7 @@ $ curl --socks4 localhost:9999 icanhazip.com
 # 54.210.37.203
 {{< /highlight >}}
 
-**The parameters and their meaning**
+##### **The parameters and their meaning**
 I extracted a portion of the meaning of parameter from the man page, but in a nutshell it means dynamic port forward without a shell.
 {{< highlight text >}}
 -N Do not execute a remote command. This is useful for just forwarding ports.
@@ -38,7 +38,7 @@ I extracted a portion of the meaning of parameter from the man page, but in a nu
 -D Specifies a local “dynamic” application-level port forwarding.  This works by allocating a socket to listen to port on the local side, optionally bound to the specified bind_address.
 {{< /highlight >}}
 
-### Closing notes
+##### **Closing notes**
 As you can see this option can be really handy to have a temporary VPN or proxy, also if you want to make this automatic and not so temporary you can check autossh or any real VPN solution like OpenVPN. You can use this kind of proxy in any App that supports SOCKS, most browsers do for example.
 
 ### Errata
