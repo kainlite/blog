@@ -10,7 +10,6 @@ tags:
 - linux
 categories:
 - linux
-draft: true
 ---
 
 ##### **Introduction**
