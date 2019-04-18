@@ -21,8 +21,8 @@ Here we will see how to use terraform to manage our lambda functions, we will us
 
 ##### ****
 **First of all we need to create a bucket**
-{{< highlight bash >}}
-{{< /highlight >}}
+{{< gist kainlite 8ae7369c6c3531fb6c39038a74d7a895 >}}
+
 
 ##### **Clean up**
 Clean up.

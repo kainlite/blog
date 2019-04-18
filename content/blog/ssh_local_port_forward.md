@@ -10,6 +10,9 @@ tags:
 - linux
 categories:
 - linux
+lua:
+  image:
+    url: "/img/openssh.png"
 ---
 
 ##### **Introduction**
@@ -19,24 +22,16 @@ SSH is a great tool not only to connect and interact with remote servers, in thi
 Local port forward basically let's you forward one port from a remote machine to your local machine, for example you want to connect to a remote service from machine but just temporarily or there is a firewall that won't let you do it, let's say you want to connect to a mysql instance on the default port (3306).
 
 ##### **The command**
-{{< highlight bash >}}
-ssh -Nn -L 3306:localhost:3306 user@example.com
-{{< /highlight >}}
+{{< gist kainlite a3db371793effeb50fbc5341166c686c "snippet1.sh" >}}
 
 Here we are forwarding localhost:3306 in the remote machine to localhost:3306, but you can specify another address in the network for example 172.16.16.200 and the command would look like this:
 
-{{< highlight bash >}}
-ssh -Nn -L 3306:172.16.16.200:3306 user@example.com
-{{< /highlight >}}
+{{< gist kainlite a3db371793effeb50fbc5341166c686c "snippet2.sh" >}}
 This will give you access to the ip 172.16.16.200 and port 3306 in the remote network.
 
 ##### **The parameters and their meaning**
 I extracted a portion of the meaning of parameter from the man page, but in a nutshell it means local port forward without a shell.
-{{< highlight text >}}
--N Do not execute a remote command. This is useful for just forwarding ports.
--n Redirects stdin from /dev/null (actually, prevents reading from stdin). This must be used when ssh is run in the background.
--L Specifies that connections to the given TCP port or Unix socket on the local (client) host are to be forwarded to the given host and port, or Unix socket, on the remote side.
-{{< /highlight >}}
+{{< gist kainlite a3db371793effeb50fbc5341166c686c "snippet3.txt" >}}
 
 ##### **Server configuration**
 There is a configuration parameter that can change the behaviour of remote and local forwarded ports, that parameter is `AllowTcpForwarding`.
