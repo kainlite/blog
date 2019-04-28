@@ -21,6 +21,8 @@ Vault secures, stores, and tightly controls access to tokens, passwords, certifi
 
 Before you start you will need [Consul](https://www.consul.io/docs/install/index.html), [Vault](https://www.vaultproject.io/docs/install/) client binaries and [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) or any running cluster, you can find the files used here in [this repo](https://github.com/kainlite/vault-consul-tls).
 
+This is the part one of [two]({{< ref "/blog/actually_using_vault_on_kubernetes" >}})
+
 ##### **Preparing the cluster**
 Let's start minikube and validate that we can reach our cluster with `minikube start` and then with `kubectl get nodes`, also the dashboard can become handy you can invoke it like this `minikube dashboard`
 {{< gist kainlite 750ee3b20d03fe3e999844c1c80fcf3f >}}
