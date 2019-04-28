@@ -52,7 +52,7 @@ The last step would be to test all that, so after having deployed the files to k
 {{< gist kainlite 269dd3f96ef2b5505a50513eef9ff94c >}}
 
 ##### **Closing notes**
-This post was heavily inspired by [this doc page](https://learn.hashicorp.com/vault/identity-access-management/vault-agent-k8s), the main difference is that we have mutual TLS on, the only thing left would be to auto unseal our Vault, but we will left that for a future article or as an excercise for the reader.
+This post was heavily inspired by [this doc page](https://learn.hashicorp.com/vault/identity-access-management/vault-agent-k8s), the main difference is that we have mutual TLS on, the only thing left would be to auto unseal our Vault, but we will left that for a future article or as an exercise for the reader.
 
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.
