@@ -34,11 +34,11 @@ The next steps would be to create an encryption key for the consul cluster and t
 {{< gist kainlite 4f787ef0e5152eb14928a73b3e2b9d91 >}}
 
 ##### **Vault**
-Once we have Consul runnning starting vault should be straight forward, we need to create all kubernetes resources associated with it and then initialize and unseal the vault.
+Once we have Consul running starting vault should be straight forward, we need to create all kubernetes resources associated with it and then initialize and unseal the vault.
 {{< gist kainlite dbe6cb3055b5c202bb3f65b7178e2f7c >}}
 
 ##### **Closing notes**
-As you can see it takes a while to configure a Vault server but I really like the pattern that renders for the apps using it, in the next post we will see how to unlock it automatically with kubernetes and also how to mount the secrets automatically to our pods so our applications can use it :), this post was heavily insiped by [this one](https://testdriven.io/blog/running-vault-and-consul-on-kubernetes/) and [this one](https://learn.hashicorp.com/consul/advanced/day-1-operations/certificates#configuring-agents).
+As you can see it takes a while to configure a Vault server but I really like the pattern that renders for the apps using it, in the next post we will see how to unlock it automatically with kubernetes and also how to mount the secrets automatically to our pods so our applications can use it :), this post was heavily inspired by [this one](https://testdriven.io/blog/running-vault-and-consul-on-kubernetes/) and [this one](https://learn.hashicorp.com/consul/advanced/day-1-operations/certificates#configuring-agents).
 
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.
