@@ -1,6 +1,6 @@
 ---
 author: "Gabriel Garrido"
-date: 2019-04-29
+date: 2019-05-01
 linktitle: Go continuous integration with Travis CI and Docker
 title: Go continuous integration with Travis CI and Docker
 highlight: true
