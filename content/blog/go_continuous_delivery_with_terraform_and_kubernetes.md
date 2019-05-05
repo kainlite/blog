@@ -90,6 +90,8 @@ I will be posting some articles about CI and CD and good practices that DevOps/S
 
 In this example many things could be improved, for example we use a node port and there is no firewall so we can hit our app directly via nodeport or using the load balancer, we should add some firewall rules so only the load balancer is able to talk to the node port range (30000-32767).
 
+Also be aware that for production this setup will not be sufficient but for a development environment would suffice initially.
+
 Some useful links for [travis](https://docs.travis-ci.com/user/job-lifecycle/) and [terraform](https://www.terraform.io/docs/providers/do/r/kubernetes_cluster.html).
 
 ### Errata
