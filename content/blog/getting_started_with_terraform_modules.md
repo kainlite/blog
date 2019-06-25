@@ -52,7 +52,7 @@ Then we will just run it.
 If we check the output we will see that the name of the cluster matches the one from our variables and at the end we can see the output that the module produced.
 
 ##### **Closing notes**
-As you can see, creating a module is pretty simple and with good planing and practice it can save you a lot of effort along big projects or while working on multiple projects, let me know your thoughts about it.
+As you can see, creating a module is pretty simple and with good planing and practice it can save you a lot of effort along big projects or while working on multiple projects, let me know your thoughts about it. Always remember to destroy the resources that you're not going to use with `terraform destroy`.
 
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.
