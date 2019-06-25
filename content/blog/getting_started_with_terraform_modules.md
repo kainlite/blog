@@ -6,6 +6,8 @@ title: Getting started with terraform modules
 highlight: true
 tags:
 - terraform
+- kubernetes
+- gcp
 categories:
 - terraform
 lua:
