@@ -11,6 +11,7 @@ tags:
 - linux
 - continuous-integration
 - continuous-delivery
+- terraform
 categories:
 - continuous-integration
 lua:

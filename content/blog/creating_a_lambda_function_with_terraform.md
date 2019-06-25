@@ -8,6 +8,7 @@ tags:
 - development
 - serverless
 - aws
+- terraform
 categories:
 - serverless
 lua:

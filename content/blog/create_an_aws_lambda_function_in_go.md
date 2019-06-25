@@ -10,6 +10,7 @@ tags:
 - development
 - serverless
 - linux
+- terraform
 categories:
 - serverless
 ---
