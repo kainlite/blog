@@ -6,6 +6,7 @@ title: Go echo bot
 highlight: true
 tags:
 - go
+- golang
 - slack
 - ksonnet
 - jsonnet

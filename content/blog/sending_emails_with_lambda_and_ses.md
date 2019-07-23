@@ -6,6 +6,7 @@ title: Sending emails with AWS Lambda and SES from a HTML form
 highlight: true
 tags:
 - go
+- golang
 - development
 - serverless
 - linux

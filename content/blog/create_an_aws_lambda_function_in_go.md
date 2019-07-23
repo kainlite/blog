@@ -7,6 +7,7 @@ title: Create an AWS lambda function in Go
 highlight: true
 tags:
 - go
+- golang
 - development
 - serverless
 - linux

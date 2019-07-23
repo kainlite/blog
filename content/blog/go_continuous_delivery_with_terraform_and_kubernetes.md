@@ -8,6 +8,7 @@ tags:
 - travis-ci
 - docker
 - golang
+- go
 - linux
 - continuous-integration
 - continuous-delivery

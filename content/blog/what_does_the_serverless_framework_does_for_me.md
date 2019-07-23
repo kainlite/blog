@@ -8,6 +8,7 @@ tags:
 - development
 - serverless
 - go
+- golang
 categories:
 - serverless
 lua:

@@ -5,6 +5,8 @@ linktitle: Serverless authentication with Cognito
 title: Serverless authentication with Cognito
 highlight: true
 tags:
+- go
+- golang
 - serverless
 - aws
 - security
