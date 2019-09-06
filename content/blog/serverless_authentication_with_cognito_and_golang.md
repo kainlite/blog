@@ -44,6 +44,7 @@ While this file might seem relatively simple, the API Gateway has many features 
 
 ##### Lambda
 This file has the lambda function definition, the policy and the roles needed, basically the policy is to be able to log to CloudWatch and to inspect with X-Ray, then the log group to store the logs will set the retention period by default 7 days.
+{{< gist kainlite f8d4db31c0b353d627df97418dd5dc87 >}}
 
 ##### Variables and locals
 First the variables file with the default values
