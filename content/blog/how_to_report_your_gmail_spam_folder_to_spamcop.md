@@ -32,6 +32,17 @@ I have added some comments along the code to make things easy to understand
 ##### **Running it**
 {{< gist kainlite 244d04580a8ca63e4bbecdcecd649840 >}}
 
+##### **Sources**
+Some articles, pages, and files that I used and helped me to do what I wanted to do:
+
+- https://developers.google.com/gmail/api/quickstart/go
+- https://github.com/gsuitedevs/go-samples/blob/master/gmail/quickstart/quickstart.go
+- https://socketloop.com/tutorials/golang-send-email-with-attachment-rfc2822-using-gmail-api-example
+- https://raw.githubusercontent.com/googleapis/google-api-go-client/master/examples/gmail.go
+- https://github.com/xDinomode/Go-Gmail-Api-Example/blob/master/email.go
+- https://www.spamcop.net/reporter.pl
+- https://godoc.org/google.golang.org/api/gmail/v1#Message
+
 ### Additional notes
 While this still needs some work hopefully will keep my account clean and probably help someone wondering about how to do the same.
 
