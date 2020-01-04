@@ -49,10 +49,10 @@
             <div class="blogpost">
               {{ .Content }}
               <hr>
-              {{ if isset .Site.Pages 5 }}
+              {{ if isset .Site.RegularPages 5 }}
               <div class="related-posts">
                 <h5>Related Posts</h5>
-                {{ range first 3 ( where ( where .Site.Pages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags ) "Permalink" "!=" .Permalink ) }}
+                {{ range first 3 ( where ( where .Site.RegularPages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags ) "Permalink" "!=" .Permalink ) }}
                   <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
                       <h6 style="text-align: right">

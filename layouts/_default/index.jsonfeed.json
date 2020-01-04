@@ -6,7 +6,7 @@
     {{- .Permalink | jsonify -}}
   {{- end }},
   "items": [
-    {{ range $index, $entry := first 15 .Data.Pages }}
+    {{ range $index, $entry := first 15 .Site.RegularPages }}
     {{- if $index }}, {{ end }}
     {
       "id": {{ .Permalink | jsonify }},
