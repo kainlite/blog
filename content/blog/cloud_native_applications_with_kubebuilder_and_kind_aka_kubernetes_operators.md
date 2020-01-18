@@ -28,6 +28,8 @@ Basically what the code does is create an alpine/socat pod and you can specify t
 
 While Kind is not actually a requirement I used that for testing and really liked it, it's faster and simpler than minikube.
 
+Also if you are interested how I got the idea to make this operator check this [github issue](https://github.com/kubernetes/kubernetes/issues/72597).
+
 ##### **Prerequisites**
 * [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder)
 * [kustomize](https://github.com/kubernetes-sigs/kustomize)
