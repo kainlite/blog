@@ -79,7 +79,7 @@ Here we just build and push the docker image to dockerhub or our favorite public
 Then you can install it with `make deploy IMG=kainlite/forward:0.0.1` and uninstall it with `make uninstall`
 
 ##### **Closing notes**
-Be sure to check the [kubebuilder book](https://book.kubebuilder.io/) if you want to learn more, I hope you enjoyed it and hope to see you on [twitter](https://twitter.com/kainlite) or [github](https://github.com/kainlite)!
+Be sure to check the [kubebuilder book](https://book.kubebuilder.io/) if you want to learn more and the [kind docs](https://kind.sigs.k8s.io/docs/user/quick-start), I hope you enjoyed it and hope to see you on [twitter](https://twitter.com/kainlite) or [github](https://github.com/kainlite)!
 
 ### Errata
 If you spot any error or have any suggestion, please send me a message so it gets fixed.
