@@ -41,7 +41,7 @@ We want to create a repo or sync a repo in this case, so we select `Create a pro
 ##### **Project type**
 In this step we have a few options and since we have our code in Github and we want to work there, we only want to sync it, so we need to choose `CI/CD for external repo`
 {{< figure src="/img/gitlab-2.png" width="100%" >}}
-Note that if the repo is public you can fetch/clone using the repo URL, but since I want to check also private repos I went for the github token alternative. Once you hit github it will ask you for the token then it will show you the full list of repos in your account\
+Note that if the repo is public you can fetch/clone using the repo URL, but since I want to check also private repos I went for the github token alternative. Once you hit github it will ask you for the token then it will show you the full list of repos in your account
 
 ##### **Github Token**
 I picked to use a personal token to fetch the repos to be able to grab private repos, etc, so you will need to go to your github account, `Settings->Developer settings` and then create a new token or [click here](https://github.com/settings/tokens)
@@ -49,11 +49,11 @@ I picked to use a personal token to fetch the repos to be able to grab private r
 
 Now you only need to give it access to repo, and hit save or create new personal token
 {{< figure src="/img/gitlab-4.png" width="100%" >}}
-Make sure you don't expose or publish that token in any way, otherwise someone could gain access to your account\
+Make sure you don't expose or publish that token in any way, otherwise someone could gain access to your account
 
 ##### (Back to gitlab) **Select the repository to sync**
 Here we need to select the repo that we want to sync and hit connect, it will automatically fetch everything periodically from github.
-{{< figure src="/img/gitlab-5.png" width="100%" >}}\
+{{< figure src="/img/gitlab-5.png" width="100%" >}}
 
 ##### **Dockerhub token**
 Now we will need to create a token for dockerhub so we can push our image from the build runner, go to your dockerhub account and create a token
@@ -62,19 +62,19 @@ Basically you have to go to `Account settings->Security->New Access Token` or [c
 
 Then we need to save that token as `DOCKERHUB_TOKEN` in this case as an environment variable in the gitlab project, `Settings->CI/CD->Variables`
 {{< figure src="/img/gitlab-7.png" width="100%" >}}
-make sure masked is marked but not protected, protected is only used when you want to use that secret in specific branches\
+make sure masked is marked but not protected, protected is only used when you want to use that secret in specific branches
 
 ##### **Gitlab-CI config**
 After that we only need to add the code to the repo and that will trigger a build, the file needs to be called `.gitlab-ci.yml`
 {{< gist kainlite  1cb1aeb54f12830f4bcef6f0df02a250 >}}
-basically we just install everything we need run the tests if everything goes well, then the build and push process. There is a lot of room for improvement in that initial config, but for now we only care in having some sort of CI system\
+basically we just install everything we need run the tests if everything goes well, then the build and push process. There is a lot of room for improvement in that initial config, but for now we only care in having some sort of CI system
 
 Then we will see something like this in the `CI/CD->Pipelines` tab, after each commit it will trigger a test, build and push
-{{< figure src="/img/gitlab-8.png" width="100%" >}}\
+{{< figure src="/img/gitlab-8.png" width="100%" >}}
 
 ##### **Checking the results**
 And we can validate that the images are in dockerhub
-{{< figure src="/img/gitlab-9.png" width="100%" >}}\
+{{< figure src="/img/gitlab-9.png" width="100%" >}}
 
 ##### **Useful links**
 Some useful links:
