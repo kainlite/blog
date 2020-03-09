@@ -129,7 +129,7 @@ params:
 
   # Comment
   comment:
-    type:
+    type: disqus
     disqus: kainlite
 
   # wordcount
