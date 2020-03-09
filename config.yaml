@@ -1,0 +1,158 @@
+baseurl: "https://techsquad.rocks/"
+theme: hugo-theme-pure
+title: "Kubernetes, CI/CD, Git, Linux, Containers, Golang... and more"
+defaultContentLanguage: en
+footnoteReturnLinkContents: ↩
+hasCJKLanguage: false
+paginate: 7
+enableEmoji: true
+PygmentsCodeFences: false
+googleAnalytics: "UA-8919037-7"
+
+taxonomies:
+    category : categories
+    tag : tags
+    blog : blog
+outputFormats:
+  SearchIndex:
+    mediaType: "application/json"
+    baseName: "searchindex"
+    isPlainText: true
+    notAlternative: true
+  jsonfeed:
+    mediaType: "application/json"
+    baseName: "index"
+    notAlternative: true
+    isPlainText: true
+outputs:
+    home: ["html", "rss", "jsonfeed", "searchindex"]
+sitemap:
+  changefreq: monthly
+  filename: sitemap.xml
+  priority: 0.5
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      title: Home
+      url: /
+      weight: 1
+
+    - identifier: blog
+      name: Blog
+      title: Blog
+      url: /blog/
+      weight: 2
+
+    - identifier: categories
+      name: Categories
+      title: Categories
+      url: /categories/
+      weight: 3
+
+    - identifier: tags
+      name: Tags
+      title: Tags
+      url: /tags/
+      weight: 4
+
+    - identifier: about
+      name: About
+      title: About
+      url: /about/
+      weight: 5
+
+params:
+  licenselink: "https://github.com/kainlite/blog/blob/master/LICENSE.md"
+  licensename: "MIT License"
+  since: 2018
+  dateFormatToUse: "2006-01-02"
+  enablePostCopyright: true
+  mainSections: ["blog"]
+  enableMathJax: false
+  highlightjs:
+    langs: ["python", "javascript", "bash", "go", "yaml"]
+
+  # Allows you to specify an override stylesheet
+  # put custom.css in $hugo_root_dir/static/
+  # customCSS: css/custom.css
+
+  menuIcons:
+    enable: true
+    home: icon-home-fill
+    posts: icon-archives-fill
+    blog: icon-archives-fill
+    archives: icon-archives-fill
+    categories: icon-folder
+    tags: icon-tags
+    repository: icon-project
+    links: icon-friendship
+    about: icon-cup-fill
+
+  # profile
+  profile:
+    enabled: true
+    avatar: img/logo-glider.png
+    gravatar: kainlite@gmail.com
+    author: kainlite
+    author_title: "DevOps Practitioner"
+    author_description: "Articles about Kubernetes, CI/CD, Git, Linux, Containers, Golang, and probably some more random stuff, you can subscribe via RSS or JSON Feed."
+    location: Mendoza, Argentina
+    follow: https://github.com/kainlite
+    # Social Links
+    social:
+      links:
+        github: https://github.com/kainlite
+        twitter: https://twitter.com/kainlite
+        linkedin: https://www.linkedin.com/in/gabrielgarrido/
+        email: mailto:kainlite@gmail.com
+        stackoverflow: https://stackoverflow.com/users/313941/kainlite
+        rss: /index.xml
+        share: /index.json
+      link_tooltip: true
+  # Site
+  site:
+    logo:
+      enabled: true
+      width: 40
+      height: 40
+      url: "img/logo.png"
+    title: "Kubernetes, CI/CD, Git, Linux, Containers, Golang... and more"
+    favicon: "img/favicon.ico"
+
+  # Share
+  # weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
+  share:
+    enable: true
+    sites: facebook,twitter,google,linkedin
+
+  # Comment
+  comment:
+    type:
+    disqus: kainlite
+
+  # wordcount
+  postCount:
+    enable: true
+    wordcount: true
+    min2read: true
+
+  # config
+  config:
+    skin: theme-black # theme color default is white. other type [theme-black,theme-blue,theme-green,theme-purple]
+    layout: main-center # main-left main-center main-right
+    excerpt_link: Read More
+    toc: false
+
+  # Sidebar
+  sidebar: right
+
+  # Search
+  search:
+    enable: true # enable search. thanks for https://raw.githubusercontent.com/ppoffice/hexo-theme-icarus/master/source/js/insight.js
+
+  widgets:
+    - recent_posts
+    - category
+    - tag
