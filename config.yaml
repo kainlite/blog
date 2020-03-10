@@ -143,7 +143,7 @@ params:
     skin: theme-black # theme color default is white. other type [theme-black,theme-blue,theme-green,theme-purple]
     layout: main-center # main-left main-center main-right
     excerpt_link: Read More
-    toc: false
+    toc: true
 
   # Sidebar
   sidebar: right
