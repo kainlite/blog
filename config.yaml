@@ -71,6 +71,8 @@ params:
   enablePostCopyright: true
   mainSections: ["blog"]
   enableMathJax: false
+  images:
+    - img/logo.png
   highlightjs:
     langs: ["python", "javascript", "bash", "go", "yaml"]
 

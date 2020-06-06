@@ -9,9 +9,8 @@ tags:
 - linux
 categories:
 - linux
-lua:
-  image:
-    url: "/img/linux.png"
+images:
+  - "/img/linux.png"
 ---
 
 #### **Introduction**

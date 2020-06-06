@@ -10,9 +10,8 @@ tags:
 - linux
 categories:
 - linux
-lua:
-  image:
-    url: "/img/openssh.png"
+images:
+  - "/img/openssh.png"
 ---
 
 ##### **Introduction**

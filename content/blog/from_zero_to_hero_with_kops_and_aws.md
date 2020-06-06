@@ -11,9 +11,8 @@ tags:
 categories:
 - linux
 - kubernetes
-lua:
-  image:
-    url: "/img/kubernetes-aws.png"
+images:
+  - "/img/kubernetes-aws.png"
 ---
 
 ### **Introduction**

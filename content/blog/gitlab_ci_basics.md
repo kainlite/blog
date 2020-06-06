@@ -16,9 +16,8 @@ tags:
 - continuous-delivery
 categories:
 - kubernetes
-lua:
-  image:
-    url: "/img/gitlab.png"
+images:
+  - "/img/gitlab.png"
 ---
 
 ##### **Introduction**

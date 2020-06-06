@@ -11,9 +11,8 @@ tags:
 - security
 categories:
 - kubernetes
-lua:
-  image:
-    url: "/img/vault.png"
+images:
+  - "/img/vault.png"
 ---
 
 ##### **Introduction**

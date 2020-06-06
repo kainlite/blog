@@ -11,9 +11,8 @@ tags:
 - terraform
 categories:
 - serverless
-lua:
-  image:
-    url: "/img/terraform-lambda.png"
+images:
+  - "/img/terraform-lambda.png"
 ---
 
 ##### **Introduction**

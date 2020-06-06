@@ -14,9 +14,8 @@ tags:
 - lambda
 categories:
 - serverless
-lua:
-  image:
-    url: "/img/serverless-cognito.png"
+images:
+  - "/img/serverless-cognito.png"
 ---
 
 ##### **Introduction**

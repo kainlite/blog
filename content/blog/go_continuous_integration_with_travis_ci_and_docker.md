@@ -12,9 +12,8 @@ tags:
 - continuous-integration
 categories:
 - continuous-integration
-lua:
-  image:
-    url: "/img/travis-ci-docker.png"
+images:
+  - "/img/travis-ci-docker.png"
 ---
 
 ##### **Introduction**

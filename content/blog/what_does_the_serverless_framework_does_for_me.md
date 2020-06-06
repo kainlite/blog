@@ -11,9 +11,8 @@ tags:
 - golang
 categories:
 - serverless
-lua:
-  image:
-    url: "/img/serveless.png"
+images:
+  - "/img/serveless.png"
 ---
 
 ### **Introduction**

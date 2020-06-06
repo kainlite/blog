@@ -10,9 +10,8 @@ tags:
 - serverless
 categories:
 - serverless
-lua:
-  image:
-    url: "/img/logo.png"
+images:
+  - "/img/logo.png"
 ---
 
 ### **Introduction**

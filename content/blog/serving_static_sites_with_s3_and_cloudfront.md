@@ -11,9 +11,8 @@ tags:
 - aws
 categories:
 - serverless
-lua:
-  image:
-    url: "/img/serve-s3-cloudfront.png"
+images:
+  - "/img/serve-s3-cloudfront.png"
 ---
 
 ### **Serverless series**

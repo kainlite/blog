@@ -10,9 +10,8 @@ tags:
 - gcp
 categories:
 - terraform
-lua:
-  image:
-    url: "/img/terraform.png"
+images:
+  - "/img/terraform.png"
 ---
 
 ##### **Introduction**

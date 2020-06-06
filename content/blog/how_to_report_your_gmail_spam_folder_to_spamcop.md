@@ -11,9 +11,8 @@ tags:
 - linux
 categories:
 - linux
-lua:
-  image:
-    url: "/img/spam.jpg"
+images:
+  - "/img/spam.jpg"
 ---
 
 ##### **Introduction**

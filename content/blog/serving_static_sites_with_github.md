@@ -10,9 +10,8 @@ tags:
 - git
 categories:
 - serverless
-lua:
-  image:
-    url: "/img/serve-github.png"
+images:
+  - "/img/serve-github.png"
 ---
 
 ### **Introduction**

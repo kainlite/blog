@@ -11,9 +11,8 @@ tags:
 - tmux
 categories:
 - linux
-lua:
-  image:
-    url: "/img/tmux-terminal.png"
+images:
+  - "/img/tmux-terminal.png"
 ---
 
 ### **Introduction**

@@ -12,9 +12,8 @@ tags:
 - linux
 categories:
 - serverless
-lua:
-  image:
-    url: "/img/aws-lambda-ses.png"
+images:
+  - "/img/aws-lambda-ses.png"
 ---
 
 ##### **Serverless series**

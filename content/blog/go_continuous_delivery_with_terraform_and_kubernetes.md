@@ -15,9 +15,8 @@ tags:
 - terraform
 categories:
 - continuous-integration
-lua:
-  image:
-    url: "/img/travis-ci-docker.png"
+image:
+  - "/img/travis-ci-docker.png"
 ---
 
 ##### **Introduction**

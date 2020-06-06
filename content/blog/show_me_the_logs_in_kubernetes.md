@@ -10,9 +10,8 @@ tags:
 - security
 categories:
 - kubernetes
-lua:
-  image:
-    url: "/img/efk-kubernetes.png"
+images:
+  - "/img/efk-kubernetes.png"
 draft: true
 ---
 

@@ -11,9 +11,8 @@ tags:
 - security
 categories:
 - kubernetes
-lua:
-  image:
-    url: "/img/helmfile-kubernetes.png"
+images:
+  - "/img/helmfile-kubernetes.png"
 draft: true
 ---
 

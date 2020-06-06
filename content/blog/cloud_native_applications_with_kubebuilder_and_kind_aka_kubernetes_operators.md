@@ -16,9 +16,8 @@ tags:
 - kind
 categories:
 - kubernetes
-lua:
-  image:
-    url: "/img/forward.jpg"
+images:
+  - "/img/forward.jpg"
 ---
 
 ##### **Introduction**

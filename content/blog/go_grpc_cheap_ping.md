@@ -9,9 +9,8 @@ tags:
 - grpc
 categories:
 - linux
-lua:
-  image:
-    url: "/img/golang-grpc.png"
+images:
+  - "/img/golang-grpc.png"
 ---
 
 ##### **Introduction**
