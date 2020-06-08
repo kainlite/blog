@@ -17,7 +17,7 @@ tags:
 categories:
 - kubernetes
 images:
-  - "/img/forward.jpg"
+  - /img/forward.png
 ---
 
 ##### **Introduction**
