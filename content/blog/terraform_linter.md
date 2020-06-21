@@ -32,7 +32,7 @@ First we will run a PR with an issue to see it fail and how reporting works (To 
 {{< figure src="/img/reviewdog-1.png" width="100%" >}}
 
 ##### **One that actually works**
-Since we already tested it and it failed as expected we can now fix it, and now that reviewdog and tflint are happy with our commit we can just merge it.
+Since we already tested it and it failed as expected we can now fix it, and now that reviewdog and tflint are happy with our commit we can just merge it (just change t1 to t2 in the main.tf file).
 {{< figure src="/img/reviewdog-2.png" width="100%" >}}
 
 ##### **Closing notes**
