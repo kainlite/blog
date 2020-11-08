@@ -78,10 +78,12 @@ We don't actually need to do this, but this way it's easy to make sure that a po
 ##### Our actual logic (this made me chuckle so much bootstrap just to get here, but imagine having to do all that by yourself)
 This is where things actually happen, first we get our Spec updated:
 {{< gist kainlite 52c068ebde15e585c973b9e33439f971 >}}
+You can find this file [here](https://github.com/kainlite/kubernetes-prefetch-operator/blob/master/api/v1/prefetch_types.go)
 
 Then we can put some code, I will add more comments later in the code to explain what everything does:
 {{< gist kainlite 3f9ed270890b26c5e9d4b8b4d527cc45 >}}
 Basically what we do is set a timer to create a pod in each node to force it fetch the image that the deployments (that we filter by labels) needs or is going to use, by doing this if the node already has the image nothing happens and it will be removed in the next run, however if the image is not there it will be fetched so if anything happens and a pod needs to be actually scheduled there it won't need to download everything so it should be relatively faster.
+You can find this file [here](https://github.com/kainlite/kubernetes-prefetch-operator/blob/master/controllers/prefetch_controller.go)
 
 ##### What we should be seeing in our cluster
 {{< gist kainlite b4dcc0f43758e47544fc072844ae491e >}}
