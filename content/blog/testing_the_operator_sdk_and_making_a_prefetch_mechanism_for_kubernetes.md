@@ -11,7 +11,7 @@ tags:
 categories:
 - kubernetes
 images:
-  - "/img/linux.png"
+  - "/img/operator-sdk.png"
 ---
 
 #### **Introduction**
