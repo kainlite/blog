@@ -28,4 +28,4 @@ jobs:
           user_name: kainlite
           user_email: kainlite@gmail.com
           publish_branch: master
-          # cname: example.com
+          cname: techsquad.rocks
