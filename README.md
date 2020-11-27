@@ -7,6 +7,11 @@ gadd && gc -m "Message" && ggpush
 
 If those fancy aliases looks like something you might like to have check my [dotfiles](https://github.com/kainlite/dotfiles) and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) :)
 
+
+## Deploy
+Published using github actions see more at `.github/workflows/main.yml`, previously I was a git hook and that worked fine, but it's easy to have that done automatically in a remote runner instead of a local machine.
+
+## Deprecated
 This handy pre-push hook will push the changes automatically when pushing to this repo with the same commit message. Save as .git/hooks/pre-push and give it +x permissions to it.
 ```bash
 #!/bin/bash
