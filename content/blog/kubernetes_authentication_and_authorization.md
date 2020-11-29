@@ -62,7 +62,7 @@ This role has admin-like privileges, the allowed verbs are, we are using \* whic
 {{< gist kainlite 2e0bf3309f59e4ccccd8293f24792fcd >}}
 
 You can see more [here](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#determine-the-request-verb)
-You can see more [here](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#clusterrole-example)
+and [here](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#clusterrole-example)
 
 **Role binding**:
 
@@ -90,12 +90,13 @@ Notice that to be able to reach the kubernetes service since it's in a different
 Everything went well from our pod and we can communicate to the API from our pod, let's see if it works for kubectl as well.
 
 **Generate kubectl config**
+
 Fetch the token (as you can see it's saved as a kubernetes secret, so it's mounted to pods as any other secret but automatically thanks to the service account)
 {{< gist kainlite 6c0956e49301b938f6e29cf9b31dbb10 >}}
 Notes: I used `kubectl config view` to discover the kind endpoint which is `server: https://127.0.0.1:35617` in my case, then replaced the values from the secret for the CA and the service account token/secret, also note that you need to decode from base64 when using `kubectl get -o yaml`, also note that we will get errors when trying to do things outside of our namespace because we simply don't have permissions, this is a really powerful way to give permissions to users and this works because we created the role binding for our extra user and for the pod service account (be careful when wiring things up).
 
 You can see more [here](http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/)
-You can see more [here](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+and [here](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
 
 #### Clean up
 Always remember to clean up your local machine / cluster / etc, in my case `kind delete cluster` will do it.
