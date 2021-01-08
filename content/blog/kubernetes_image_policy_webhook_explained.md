@@ -24,7 +24,7 @@ This admission controller will reject all the pods that are using images with th
 
 #### Comparison
 
-The [ImagePolicyWebhook](https://kubernetes.io/docs/admin/admission-controllers/#imagepolicywebhook) is an admission controller that evaluates only images, you need to parse the requests do the logic and reponse in order to allow or deny images in the cluster.
+The [ImagePolicyWebhook](https://kubernetes.io/docs/admin/admission-controllers/#imagepolicywebhook) is an admission controller that evaluates only images, you need to parse the requests do the logic and the response in order to allow or deny images in the cluster.
 
 The good parts about the `ImagePolicyWebhook`:
 * The API server can be instructed to reject the images if the webhook endpoint is not reachable, this is quite handy but it can also bring issues, like core pods won't be able to schedule for example.
@@ -61,7 +61,7 @@ We can rely in the kubernetes CA to generate the certificate that we need:
 
 Create a CSR:
 ```
-cat <<EOF | cfssl genkey - | cfssljson -bare server
+$ cat <<EOF | cfssl genkey - | cfssljson -bare server
 {
   "hosts": [
     "image-bouncer-webhook.default.svc",
@@ -86,7 +86,7 @@ EOF
 
 Then apply it to the cluster
 ```
-cat <<EOF | kubectl apply -f -
+$ cat <<EOF | kubectl apply -f -
 apiVersion: certificates.k8s.io/v1
 kind: CertificateSigningRequest
 metadata:
@@ -103,7 +103,7 @@ EOF
 
 Approve and get your certificate for later use
 ```
-kubectl get csr image-bouncer-webhook.default -o jsonpath='{.status.certificate}' | base64 --decode > server.crt
+$ kubectl get csr image-bouncer-webhook.default -o jsonpath='{.status.certificate}' | base64 --decode > server.crt
 ```
 
 #### ImagePolicyWebhook path
@@ -113,7 +113,7 @@ we need to take care of other details add this to your hosts file in the master 
 
 We use this name because it has to match with the names from the certificate, since this will run outside kuberntes and it could even be externally available, we just fake it with a hosts entry
 ```
-echo "127.0.0.1 image-bouncer-webhook.default.svc" >> /etc/hosts
+$ echo "127.0.0.1 image-bouncer-webhook.default.svc" >> /etc/hosts
 ```
 
 Also in the apiserver you need to update it with these settings:
@@ -163,7 +163,7 @@ This configuration file instructs the API server to reach the webhook server at 
 
 Be aware that you need to be sitting in the folder with the certs for that to work:
 ```
-docker run --rm -v `pwd`/server-key.pem:/certs/server-key.pem:ro -v `pwd`/server.crt:/certs/server.crt:ro -p 1323:1323 --network host kainlite/kube-image-bouncer -k /certs/server-key.pem -c /certs/server.crt
+$ docker run --rm -v `pwd`/server-key.pem:/certs/server-key.pem:ro -v `pwd`/server.crt:/certs/server.crt:ro -p 1323:1323 --network host kainlite/kube-image-bouncer -k /certs/server-key.pem -c /certs/server.crt
 ```
 
 #### ValidatingAdmissionWebhook path
@@ -171,24 +171,24 @@ docker run --rm -v `pwd`/server-key.pem:/certs/server-key.pem:ro -v `pwd`/server
 If you are going this path, all you need to do is generate the certificates, everything else can be done with kubectl, first of all you have to create a tls secret holding the webhook certificate and key (we just generated this in the previous step):
 
 ```
-kubectl create secret tls tls-image-bouncer-webhook \
+$ kubectl create secret tls tls-image-bouncer-webhook \
   --key server-key.pem \
   --cert server.pem
 ```
 
 Then create a kubernetes deployment for the `image-bouncer-webhook`:
 ```
-kubectl apply -f kubernetes/image-bouncer-webhook.yaml
+$ kubectl apply -f kubernetes/image-bouncer-webhook.yaml
 ```
 
 Finally create `ValidatingWebhookConfiguration` that makes use of our webhook endpoint, you can use this but be sure to update the caBundle with the `server.crt` content in base64:
 ```
-kubectl apply -f kubernetes/validating-webhook-configuration.yaml
+$ kubectl apply -f kubernetes/validating-webhook-configuration.yaml
 ```
 
 Or you can can simply generate the `validating-webhook-configuration.yaml` file like this and apply it in one go:
 ```
-cat <<EOF | kubectl apply -f -
+$ cat <<EOF | kubectl apply -f -
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
@@ -229,7 +229,7 @@ Warning  FailedCreate  23s (x15 over 43s)  replication-controller  Error creatin
 
 Create a nginx-versioned RC to validate that versioned releases still work:
 ```yml
-cat <<EOF | kubectl apply -f -
+$ cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -260,7 +260,7 @@ nginx-versioned   1         1         0         2h
 
 Now create one for nginx-latest to validate that our controller/webhook can actually reject pods with images using the latest tag:
 ```yml
-cat <<EOF | kubectl apply -f -
+$ cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -285,7 +285,7 @@ EOF
 
 If we check the pod it should not be created and the RC should show something similar to the following output, you can also check with `kubectl get events --sort-by='{.lastTimestamp}'`:
 ```
-kubectl describe rc nginx-latest
+$ kubectl describe rc nginx-latest
 Name:         nginx-latest
 Namespace:    default
 Selector:     app=nginx-latest
