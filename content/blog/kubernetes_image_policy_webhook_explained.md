@@ -57,7 +57,7 @@ $ docker pull kainlite/kube-image-bouncer
 ```
 
 #### Certificates
-We can rely in the kubernetes CA to generate the certificate that we need:
+We can rely in the kubernetes CA to generate the certificate that we need, if you want to learn more go [here](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/):
 
 Create a CSR:
 ```
