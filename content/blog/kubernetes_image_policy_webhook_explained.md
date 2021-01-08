@@ -116,11 +116,6 @@ We use this name because it has to match with the names from the certificate, si
 echo "127.0.0.1 image-bouncer-webhook.default.svc" >> /etc/hosts
 ```
 
-Be aware that you need to be sitting in the folder with the certs for that to work:
-```
-docker run --rm -v `pwd`/server-key.pem:/certs/server-key.pem:ro -v `pwd`/server.crt:/certs/server.crt:ro -p 1323:1323 --network host kainlite/kube-image-bouncer -k /certs/server-key.pem -c /certs/server.crt
-```
-
 Also in the apiserver you need to update it with these settings:
 ```
 --admission-control-config-file=/etc/kubernetes/kube-image-bouncer/admission_configuration.json
@@ -165,6 +160,11 @@ users:
     client-key:  /etc/kubernetes/pki/apiserver.key
 ```
 This configuration file instructs the API server to reach the webhook server at `https://image-bouncer-webhook.default.svc:1323` and use its `/image_policy` endpoint, we're reusing the certificates from the apiserver and the one for kube-image-bouncer that we already generated.
+
+Be aware that you need to be sitting in the folder with the certs for that to work:
+```
+docker run --rm -v `pwd`/server-key.pem:/certs/server-key.pem:ro -v `pwd`/server.crt:/certs/server.crt:ro -p 1323:1323 --network host kainlite/kube-image-bouncer -k /certs/server-key.pem -c /certs/server.crt
+```
 
 #### ValidatingAdmissionWebhook path
 
@@ -374,7 +374,7 @@ This is a section of the `main.go` as we can see we are handling two `POST` path
     app.Run(os.Args)
 ```
 
-This is a section from `handlers/validating_admission.go`, basically it parses and validates if the image should be allowed or not and then it sends an [AdmissionReponse](https://pkg.go.dev/k8s.io/api/admission/v1beta1) back with the flag `Allowed` set to true or false.
+This is a section from `handlers/validating_admission.go`, basically it parses and validates if the image should be allowed or not and then it sends an [AdmissionReponse](https://pkg.go.dev/k8s.io/api/admission/v1beta1) back with the flag `Allowed` set to true or false. If you want to learm more about the different types used here you can explore the [v1beta1.Admission Documentation](https://pkg.go.dev/k8s.io/api/admission/v1beta1)
 ```
 func PostValidatingAdmission() echo.HandlerFunc {
     return func(c echo.Context) error {
