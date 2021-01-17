@@ -39,9 +39,10 @@ The good parts about the `ValidatingAdmissionWebhook`:
 * Easier deployment since the service runs as a pod.
 * Everything can be a kubernetes resource.
 * Less manual intervention and access to the master is not required.
+* If the pod or service is unavailable then all images are going to be allowed which can be a security risk in some cases, so if you are going this path be sure to make it highly available, this can actually be configured by specifying the `failurePolicy` to `Fail` instead of `Ignore` (`Fail` is the default).
 
 The bad parts about the `ValidatingAdmissionWebhook`:
-* If the pod or service is unavailable then all images are going to be allowed which can be a security risk in some cases, so if you are going this path be sure to make it highly available.
+* Anyone with enough RBAC permissions can update/change the configuration since it's just another kubernetes resource.
 
 #### Building
 
