@@ -26,6 +26,7 @@ outputFormats:
     isPlainText: true
 outputs:
     home: ["html", "rss", "jsonfeed", "searchindex"]
+    coffee: ["json"]
 sitemap:
   changefreq: monthly
   filename: sitemap.xml
