@@ -28,7 +28,7 @@ When do I need to have one? This one can be tricky and will depend on your envir
 
 Why Istio? This will be a small series of service meshes for kubernetes and I decided to start with Istio.
 
-In case you don't agree with my explanations that's ok, this is a TL;DR version and also I simplified things a lot, for a more complete overview you can check [this](https://blog.buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/) article or [this one](https://www.oreilly.com/ideas/do-you-need-a-service-mesh).
+In case you don't agree with my explanations that's ok, this is a TL;DR version and also I simplified things a lot, for a more complete overview you can check [this](https://blog.buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/) article or [this one](https://www.oreilly.com/ideas/do-you-need-a-service-mesh) or if you want a more in-depth introduction you can read more [here](https://www.toptal.com/kubernetes/service-mesh-comparison ).
 
 ### Let's get started
 First of all we need to download and install Istio in our cluster, the recommended way of doing it is using helm (In this case I will be using the no Tiller alternative, but it could be done with helm install as well, check here for [more info](https://istio.io/docs/setup/kubernetes/helm-install/)):
