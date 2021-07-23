@@ -72,11 +72,13 @@ In TypeScript or JavaScript you have to handle more things which can be easily d
 In this case we don't have to do that it will be managed by actions using the free container registry that they provide, it will build and push the image matching the branch name, notice that it is fully transparent, you don't need to configure anything on the repo, you can see the result [here](https://github.com/kainlite/ts-operator/pkgs/container/ts-operator).
 {{< gist kainlite 75c8ed737de39be95573942604ce3d21 >}}
 
-#### Building and pushing (docker image)
+#### Local development
 
 Bonus: if you want to run the operator locally when developing or debugging you can do so easily with `ts-node`, like this:
 {{< gist kainlite f9bd40bfa9b3157dbd072e03bbc2200a >}}
-The reason I used it like this was mostly to assume zero configuration, and it is possible because ts-node is listed as a development dependency.
+The reason I used it like this was mostly to assume zero configuration, and it is possible because ts-node is listed as a development dependency, also the docker image could have been used with a bit of configuration.
+
+Note that I did not add all the code from the resources folder or the setup for the typescript project, I recommend you to check that directly in the repo to understand all the missing pieces.
 
 ### Now let's see the code
 
