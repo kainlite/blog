@@ -5,7 +5,7 @@ linktitle: About
 title: About
 ---
 
-I'm ****Gabriel****, a Software Engineer and DevOps practitioner.
+I'm \***\*Gabriel\*\***, a Software Engineer and DevOps practitioner.
 This [blog](https://techsquad.rocks/blog/) will address some topics that are somewhat interesting to me.
 Ranging from software development to managing your kubertenes clusters
 

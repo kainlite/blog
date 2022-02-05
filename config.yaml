@@ -9,6 +9,11 @@ enableEmoji: true
 PygmentsCodeFences: false
 googleAnalytics: "UA-8919037-7"
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 taxonomies:
     category : categories
     tag : tags
@@ -64,6 +69,12 @@ menu:
       url: /about/
       weight: 5
 
+    - identifier: preferences
+      name: Preferences
+      title: Preferences
+      url: /preferences/
+      weight: 6
+
 params:
   licenselink: "https://github.com/kainlite/blog/blob/master/LICENSE.md"
   licensename: "MIT License"
@@ -92,6 +103,7 @@ params:
     repository: icon-project
     links: icon-friendship
     about: icon-cup-fill
+    preferences: icon-list
 
   # profile
   profile:

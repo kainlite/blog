@@ -6,4 +6,4 @@ items:
   - title: Buy me a coffee
     description: This mini modal contacts with different payment gateways and can create cookies if used, otherwise it shouldn't.
     is_functional: false
-    script_file: .js
+    script_file: widget.prod.min.js
