@@ -2,7 +2,7 @@ items:
   - title: Google Anaytics (functional)
     description: This code gives us insight into the number of people that visit our website, where they are from and what they are clicking on. It's being used with default values, it's blocked by default by ublock origin (browser extension).
     is_functional: false
-    script_file: ga.js
+    script_file: analytics.js
   - title: Buy me a coffee
     description: This mini modal contacts with different payment gateways and can create cookies if used, otherwise it shouldn't.
     is_functional: false
