@@ -7,7 +7,7 @@ hasCJKLanguage: false
 paginate: 7
 enableEmoji: true
 PygmentsCodeFences: false
-# googleAnalytics: "UA-8919037-7"
+googleAnalytics: "UA-8919037-7"
 
 markup:
   goldmark:
