@@ -10,6 +10,7 @@ tags:
   - arm
 categories:
   - kubernetes
+  - arm
 images:
   - "/img/rust.jpg"
 ---
