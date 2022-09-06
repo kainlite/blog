@@ -84,7 +84,10 @@ and the ingress resources, you will also need to have a DNS entry if you want to
 
 #### Extra
 
-You can see it running [here](http://rcv.techsquad.rocks/), a very basic HTML Curriculum vitae.
+You can see it running [here](http://rcv.techsquad.rocks/), a very basic HTML Curriculum vitae, if it doesn't work don't
+worry too much, I'm planning on upgrading the cluster and adding https to the example for another article, it will
+eventually be back up, however if you want to see it anyway, try running the example and building the image on your
+machine.
 
 For more details and to see how everything fits together I encourage you to clone the repo, test it, and modify it to
 make your own.
