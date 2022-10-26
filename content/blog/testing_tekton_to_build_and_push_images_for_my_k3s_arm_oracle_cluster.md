@@ -18,26 +18,33 @@ images:
 
 #### **Introduction**
 In this article we will explore how to deploy and configure tekton to build and push images to your registry to be
-consumed from your cluster, we will also see how these are deployed, you can use any CD tool that you like, in this case
-I will show you how this was configured.
+consumed from your cluster, we will also see how these are deployed in another article. In this one I want to show you
+how to get the images ready to use, and also a handy solution for a CI system without having to rely on external
+factors, in my case I was having issues with docker building cross-architecture images and after setting up tekton
+everything was faster and simpler, cross-architecture is slow by default but can also not work a 100% as you would
+expect, by using this approach we can just forget about the architecture and just build where we run things, it is
+definitely faster and even some of your nodes will already have the images available meaning less bandwidth consumption
+as well in the long run.
 
-You can see the source files in the `manifests` folder and that project is live and deployed using this technique.
+##### **Sources**
+
 * [tr](https://github.com/kainlite/tr), go ahead and check it out, my new blog runs there: https://tr.techsquad.rocks
+  you can check the manifests used here in the `manifests` folder.
 
 The source code and/or documentation of the projects that we will be testing are listed here:
 * [tekton](https://tekton.dev/docs/)
+* [tekton-triggers](https://tekton.dev/docs/triggers/)
+* [kaniko](https://github.com/GoogleContainerTools/kaniko)
 
 #### Installing tekton-pipelines and tekton-triggers
 Why do we need tekton-pipelines or tekton-triggers again? pipelines allows you to run multiple tasks in order and pass
 things around (this is basic to tekton and to any CI/CD system), then we need to do something when we push for example
 to our git repository, that's when tekton-triggers gets handy and let us react to changes and trigger a build or some 
-process, intereceptors are a part of tekton-triggers and let's say it gives you flexibility using events.
+process, interceptors are a part of tekton-triggers and let's say it gives you flexibility using events.
 ```bash
 kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
-kubectl apply --filename \
-https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml
-kubectl apply --filename \
-https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
+kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml
+kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
 ```
 
 Then we need to install `tkn` locally and configure some packages from the hub
@@ -276,7 +283,7 @@ stringData:
 
 You can see this file on github as well 
 [04-triggerbinding.yaml](https://github.com/kainlite/tr/blob/master/manifests/tekton/triggers/04-triggerbinding.yaml),
-When we receive the webhook we can get some information from it, basically we are insterested in the repo URL and the
+When we receive the webhook we can get some information from it, basically we are interested in the repo URL and the
 commit SHA.
 ```yaml
 apiVersion: triggers.tekton.dev/v1alpha1
@@ -382,7 +389,7 @@ spec:
 ```
 
 WHEW! that was a lot of work but trust me it's worth it, now you can build, push and run your images from your cluster,
-with no external or weird CI/CD system and everything following a GitOps model since everything can be commited and
+with no external or weird CI/CD system and everything following a GitOps model since everything can be committed and
 applied from your repository, in my case I'm using ArgoCD and Kustomize to apply everything but that is for another
 chapter.
 
