@@ -13,7 +13,7 @@ tags:
 categories:
 - kubernetes
 images:
-  - "/img/kubernetes.jpg"
+  - "/img/tekton-logo.png"
 ---
 
 #### **Introduction**
