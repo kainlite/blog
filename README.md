@@ -25,3 +25,4 @@ if [[ $? -gt 0 ]]; then
 fi
 ```
 This way we don't have to do anything manually in the other repo but to commit the proper changes here.
+
