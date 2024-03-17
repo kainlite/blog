@@ -29,4 +29,4 @@ jobs:
           user_name: kainlite
           user_email: kainlite@gmail.com
           publish_branch: master
-          cname: techsquad.rocks
+          cname: legacy.techsquad.rocks

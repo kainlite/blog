@@ -1,4 +1,4 @@
-baseurl: "https://techsquad.rocks/"
+baseurl: "https://legacy.techsquad.rocks/"
 theme: hugo-theme-pure
 title: "Kubernetes, CI/CD, Git, Linux, Containers, Golang... and more"
 defaultContentLanguage: en
